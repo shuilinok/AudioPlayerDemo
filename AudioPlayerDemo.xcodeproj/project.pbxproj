@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45B357ED1EF9147900CEF767 /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B357EC1EF9147900CEF767 /* AudioPlayer.m */; };
 		45D8CE921EAF2207003CE137 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D8CE911EAF2207003CE137 /* main.m */; };
 		45D8CE951EAF2207003CE137 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D8CE941EAF2207003CE137 /* AppDelegate.m */; };
 		45D8CE981EAF2207003CE137 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D8CE971EAF2207003CE137 /* ViewController.m */; };
@@ -14,13 +15,11 @@
 		45D8CE9D1EAF2207003CE137 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45D8CE9C1EAF2207003CE137 /* Assets.xcassets */; };
 		45D8CEA01EAF2207003CE137 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45D8CE9E1EAF2207003CE137 /* LaunchScreen.storyboard */; };
 		45D8CEB51EAF2243003CE137 /* AudioFilePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D8CEAA1EAF2243003CE137 /* AudioFilePlayer.m */; };
-		45D8CEB61EAF2243003CE137 /* NormalAudioFilePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D8CEAC1EAF2243003CE137 /* NormalAudioFilePlayer.m */; };
 		45D8CEB71EAF2243003CE137 /* AudioPlayerState.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D8CEB01EAF2243003CE137 /* AudioPlayerState.m */; };
-		45D8CEB81EAF2243003CE137 /* ConditionAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D8CEB21EAF2243003CE137 /* ConditionAudioPlayer.m */; };
-		45D8CEB91EAF2243003CE137 /* NormalAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D8CEB41EAF2243003CE137 /* NormalAudioPlayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		45B357EC1EF9147900CEF767 /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayer.m; sourceTree = "<group>"; };
 		45D8CE8D1EAF2207003CE137 /* AudioPlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioPlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45D8CE911EAF2207003CE137 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		45D8CE931EAF2207003CE137 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -33,16 +32,9 @@
 		45D8CEA11EAF2207003CE137 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45D8CEA91EAF2243003CE137 /* AudioFilePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFilePlayer.h; sourceTree = "<group>"; };
 		45D8CEAA1EAF2243003CE137 /* AudioFilePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioFilePlayer.m; sourceTree = "<group>"; };
-		45D8CEAB1EAF2243003CE137 /* NormalAudioFilePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalAudioFilePlayer.h; sourceTree = "<group>"; };
-		45D8CEAC1EAF2243003CE137 /* NormalAudioFilePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalAudioFilePlayer.m; sourceTree = "<group>"; };
 		45D8CEAE1EAF2243003CE137 /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer.h; sourceTree = "<group>"; };
 		45D8CEAF1EAF2243003CE137 /* AudioPlayerState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayerState.h; sourceTree = "<group>"; };
 		45D8CEB01EAF2243003CE137 /* AudioPlayerState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayerState.m; sourceTree = "<group>"; };
-		45D8CEB11EAF2243003CE137 /* ConditionAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConditionAudioPlayer.h; sourceTree = "<group>"; };
-		45D8CEB21EAF2243003CE137 /* ConditionAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConditionAudioPlayer.m; sourceTree = "<group>"; };
-		45D8CEB31EAF2243003CE137 /* NormalAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalAudioPlayer.h; sourceTree = "<group>"; };
-		45D8CEB41EAF2243003CE137 /* NormalAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalAudioPlayer.m; sourceTree = "<group>"; };
-		45D8CEBB1EAF22CA003CE137 /* NSProxyExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSProxyExtention.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +48,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45B357EE1EF91AB500CEF767 /* Universe */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Universe;
+			sourceTree = "<group>";
+		};
 		45D8CE841EAF2207003CE137 = {
 			isa = PBXGroup;
 			children = (
@@ -75,7 +74,7 @@
 		45D8CE8F1EAF2207003CE137 /* AudioPlayerDemo */ = {
 			isa = PBXGroup;
 			children = (
-				45D8CEBA1EAF22CA003CE137 /* Universe */,
+				45B357EE1EF91AB500CEF767 /* Universe */,
 				45D8CEA71EAF2243003CE137 /* AudioPlayerBox */,
 				45D8CE931EAF2207003CE137 /* AppDelegate.h */,
 				45D8CE941EAF2207003CE137 /* AppDelegate.m */,
@@ -112,8 +111,6 @@
 			children = (
 				45D8CEA91EAF2243003CE137 /* AudioFilePlayer.h */,
 				45D8CEAA1EAF2243003CE137 /* AudioFilePlayer.m */,
-				45D8CEAB1EAF2243003CE137 /* NormalAudioFilePlayer.h */,
-				45D8CEAC1EAF2243003CE137 /* NormalAudioFilePlayer.m */,
 			);
 			path = AudioFilePlayer;
 			sourceTree = "<group>";
@@ -122,22 +119,11 @@
 			isa = PBXGroup;
 			children = (
 				45D8CEAE1EAF2243003CE137 /* AudioPlayer.h */,
+				45B357EC1EF9147900CEF767 /* AudioPlayer.m */,
 				45D8CEAF1EAF2243003CE137 /* AudioPlayerState.h */,
 				45D8CEB01EAF2243003CE137 /* AudioPlayerState.m */,
-				45D8CEB11EAF2243003CE137 /* ConditionAudioPlayer.h */,
-				45D8CEB21EAF2243003CE137 /* ConditionAudioPlayer.m */,
-				45D8CEB31EAF2243003CE137 /* NormalAudioPlayer.h */,
-				45D8CEB41EAF2243003CE137 /* NormalAudioPlayer.m */,
 			);
 			path = AudioPlayer;
-			sourceTree = "<group>";
-		};
-		45D8CEBA1EAF22CA003CE137 /* Universe */ = {
-			isa = PBXGroup;
-			children = (
-				45D8CEBB1EAF22CA003CE137 /* NSProxyExtention.h */,
-			);
-			path = Universe;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,13 +198,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				45D8CE981EAF2207003CE137 /* ViewController.m in Sources */,
+				45B357ED1EF9147900CEF767 /* AudioPlayer.m in Sources */,
 				45D8CE951EAF2207003CE137 /* AppDelegate.m in Sources */,
 				45D8CE921EAF2207003CE137 /* main.m in Sources */,
-				45D8CEB81EAF2243003CE137 /* ConditionAudioPlayer.m in Sources */,
 				45D8CEB71EAF2243003CE137 /* AudioPlayerState.m in Sources */,
 				45D8CEB51EAF2243003CE137 /* AudioFilePlayer.m in Sources */,
-				45D8CEB91EAF2243003CE137 /* NormalAudioPlayer.m in Sources */,
-				45D8CEB61EAF2243003CE137 /* NormalAudioFilePlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +361,7 @@
 				45D8CEA61EAF2207003CE137 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

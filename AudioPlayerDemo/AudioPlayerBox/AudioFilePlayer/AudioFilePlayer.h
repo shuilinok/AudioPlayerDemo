@@ -6,19 +6,26 @@
 #import <Foundation/Foundation.h>
 #import "AudioPlayer.h"
 
-//声音文件播放器
-@protocol AudioFilePlayer <AudioPlayer>
 
-@optional
+//声音文件播放器
+@interface AudioFilePlayer : AudioPlayer
 
 @property (readonly, strong, nonatomic) NSString *url;
+
+- (instancetype)initWithUrl:(NSString *)url;
 
 @end
 
 
+@interface AudioFilePlayerStartPolicy : NSObject <AudioPlayerStartPolicy>
 
-@interface AudioFilePlayer : NSObject <AudioFilePlayer>
+@property (weak, nonatomic) AudioFilePlayer *player;
 
-- (instancetype)initWithUrl:(NSString *)url;
+@end
+
+
+@interface AudioFilePlayerStopPolicy : NSObject <AudioPlayerStopPolicy>
+
+@property (weak, nonatomic) AudioFilePlayer *player;
 
 @end

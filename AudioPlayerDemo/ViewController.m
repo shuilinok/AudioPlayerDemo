@@ -7,10 +7,10 @@
 
 
 #import "ViewController.h"
-#import "NormalAudioFilePlayer.h"
+#import "AudioFilePlayer.h"
 
 @interface ViewController ()
-@property (strong, nonatomic) NormalAudioFilePlayer *player;
+@property (strong, nonatomic) AudioFilePlayer *player;
 @end
 
 @implementation ViewController
@@ -21,11 +21,10 @@
     
     NSString *url = @"http://www.xxx.com/test.mp3";
     
-    NormalAudioFilePlayer *player = [NormalAudioFilePlayer createWithUrl:url];
+    AudioFilePlayer *player = [[AudioFilePlayer alloc] initWithUrl:url];
     self.player = player;
     
-    [player start];
-    
+    [player.state start];
 }
 
 - (void)dealloc
@@ -52,7 +51,7 @@
     [temp removeObserver:self forKeyPath:@"state" context:NULL];
 }
 
-- (void)setPlayer:(NormalAudioFilePlayer *)player
+- (void)setPlayer:(AudioFilePlayer *)player
 {
     [self endObserve];
     
@@ -67,7 +66,7 @@
     {
         if([keyPath isEqualToString:@"state"])
         {
-            id<AudioPlayerState> state = self.player.state;
+            AudioPlayerState *state = self.player.state;
             NSLog(@"状态改变为：%@",state);
         }
     }

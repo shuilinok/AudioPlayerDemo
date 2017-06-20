@@ -6,19 +6,42 @@
 #import <Foundation/Foundation.h>
 #import "AudioPlayerState.h"
 
-//声音播放器
-@protocol AudioPlayer <NSObject>
+@class AudioPlayer;
 
-@optional
+@protocol AudioPlayerStartPolicy <NSObject>
 
-/* 播放器状态 */
-@property (readonly, strong, nonatomic) id<AudioPlayerState> state;
+@property (weak, nonatomic) AudioPlayer *player;
 
 /* 开始播放 */
 - (void)start;
 
+@end
+
+
+@protocol AudioPlayerStopPolicy <NSObject>
+
+@property (weak, nonatomic) AudioPlayer *player;
+
 /* 停止播放 */
 - (void)stop;
+
+@end
+
+
+//声音播放器
+@interface AudioPlayer : NSObject
+
+/* 播放器状态 */
+@property (strong, nonatomic) AudioPlayerState *state;
+
+/* 错误发生 */
+@property (strong, nonatomic) NSError *error;
+
+/* 播放器启动策略 */
+@property (strong, nonatomic) id<AudioPlayerStartPolicy> startPolicy;
+
+/* 播放器停止策略 */
+@property (strong, nonatomic) id<AudioPlayerStopPolicy> stopPolicy;
 
 @end
 

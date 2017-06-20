@@ -8,9 +8,6 @@
 
 @interface AudioFilePlayer ()
 
-/* 播放器状态 */
-@property (strong, nonatomic) id<AudioPlayerState> state;
-
 @property (strong, nonatomic) NSString *url;
 
 @end
@@ -23,33 +20,62 @@
     self = [super init];
     if(self)
     {
-        self.state = [[AudioPlayerNoneState alloc] init];
         self.url = url;
+        self.startPolicy = [[AudioFilePlayerStartPolicy alloc] init];
+        self.stopPolicy = [[AudioFilePlayerStopPolicy alloc] init];
     }
     
     return self;
 }
 
-/* 开始播放 */
-- (void)start
+@end
+
+
+
+@implementation AudioFilePlayerStartPolicy
+
+- (NSError *)check
 {
-    self.state = [[AudioPlayerStartingState alloc] init];
-    
-    //启动播放操作
+    //检查设置
     //...
-    
-    self.state = [[AudioPlayerStartedState alloc] init];
+
+    return nil;
 }
 
-/* 停止播放 */
+- (void)start
+{
+    NSError *error = [self check];
+    
+    //满足条件就启动
+    if(error.code == noErr)
+    {
+        self.player.state = [[AudioPlayerStartingState alloc] init];
+        
+        //启动播放操作
+        //...
+        
+        self.player.state = [[AudioPlayerStartedState alloc] init];
+    }
+    else
+    {
+        self.player.error = error;
+    }
+}
+
+@end
+
+
+@implementation AudioFilePlayerStopPolicy
+
 - (void)stop
 {
-    self.state = [[AudioPlayerStoppingState alloc] init];
+    self.player.state = [[AudioPlayerStoppingState alloc] init];
     
     //停止播放操作
     //...
     
-    self.state = [[AudioPlayerStoppedState alloc] init];
+    self.player.state = [[AudioPlayerStoppedState alloc] init];
 }
 
 @end
+

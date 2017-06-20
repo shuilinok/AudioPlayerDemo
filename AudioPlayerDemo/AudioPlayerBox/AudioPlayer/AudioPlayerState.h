@@ -5,42 +5,44 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol AudioPlayer;
+@class AudioPlayer;
 
 //声音播放器状态
-@protocol AudioPlayerState <NSObject>
+@interface AudioPlayerState : NSObject
 
-//开始播放
-- (void)start:(id<AudioPlayer>)player;
+@property (weak, nonatomic) AudioPlayer *player;
 
-//停止播放
-- (void)stop:(id<AudioPlayer>)player;
+/* 开始播放 */
+- (void)start;
+
+/* 停止播放 */
+- (void)stop;
 
 @end
 
 
 //播放器初始状态
-@interface AudioPlayerNoneState : NSObject <AudioPlayerState>
+@interface AudioPlayerNoneState : AudioPlayerState
 
 @end
 
 //播放器启动中状态
-@interface AudioPlayerStartingState : NSObject <AudioPlayerState>
+@interface AudioPlayerStartingState : AudioPlayerState
 
 @end
 
 //播放器已启动状态
-@interface AudioPlayerStartedState : NSObject <AudioPlayerState>
+@interface AudioPlayerStartedState : AudioPlayerState
 
 @end
 
 //播放器停止中状态
-@interface AudioPlayerStoppingState : NSObject <AudioPlayerState>
+@interface AudioPlayerStoppingState : AudioPlayerState
 
 @end
 
 //播放器已停止状态
-@interface AudioPlayerStoppedState : NSObject <AudioPlayerState>
+@interface AudioPlayerStoppedState : AudioPlayerState
 
 @end
 
