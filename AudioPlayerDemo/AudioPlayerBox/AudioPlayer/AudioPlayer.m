@@ -7,6 +7,8 @@
 //
 
 #import "AudioPlayer.h"
+#import "AudioPlayerControlPolicy_Private.h"
+#import "AudioPlayerStateControlPolicy.h"
 
 @implementation AudioPlayer
 
@@ -16,7 +18,7 @@
     if(self)
     {
         self.state = AudioPlayer_State_None;
-        self.controlPolicy = [[AudioPlayerControlPolicy alloc] init];//默认控制策略
+        self.controlPolicy = [[AudioPlayerStateControlPolicy alloc] init];//默认控制策略
     }
     
     return self;

@@ -7,13 +7,7 @@
 //
 
 #import "AudioPlayerControlPolicy.h"
-#import "AudioPlayer.h"
-
-@interface AudioPlayerControlPolicy ()
-
-
-@end
-
+#import "AudioPlayerControlPolicy_Private.h"
 
 @implementation AudioPlayerControlPolicy
 
@@ -24,31 +18,52 @@
 
 - (void)start
 {
-    AudioPlayer_State state = self.player.state;
-    if(state == AudioPlayer_State_None || state == AudioPlayer_State_Stopped)
-    {
-        [self.player start];
-    }
-    else if(state == AudioPlayer_State_Stopping)
-    {
-        //也是可以start的
-    }
-    else
-    {
-        
-    }
+    //子类实现
 }
 
 - (void)stop
 {
-    AudioPlayer_State state = self.player.state;
-    if(state == AudioPlayer_State_Starting || state == AudioPlayer_State_Started)
+    //子类实现
+}
+
+- (void)handleChangedState:(AudioPlayer_State)state
+{
+    //子类实现
+}
+
+- (void)setPlayer:(AudioPlayer *)player
+{
+    [self endObserve];
+    
+    _player = player;
+    
+    [self beginObserve];
+}
+
+//开始观察
+- (void)beginObserve
+{
+    NSObject *temp = _player;
+    [temp addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:NULL];
+}
+
+//结束观察
+- (void)endObserve
+{
+    NSObject *temp = _player;
+    [temp removeObserver:self forKeyPath:@"state" context:NULL];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    AudioPlayer *player = object;
+    if(player == self.player)
     {
-        [self.player stop];
-    }
-    else
-    {
-        
+        //观察到本下载器对象此属性改变
+        if([keyPath isEqualToString:@"state"])
+        {
+            [self handleChangedState:player.state];
+        }
     }
 }
 
