@@ -8,7 +8,6 @@
 
 #import "AudioPlayer.h"
 
-
 @implementation AudioPlayer
 
 - (instancetype)init
@@ -16,31 +15,35 @@
     self = [super init];
     if(self)
     {
-        self.state = [[AudioPlayerNoneState alloc] init];
+        self.state = AudioPlayer_State_None;
+        self.controlPolicy = [[AudioPlayerControlPolicy alloc] init];//默认控制策略
     }
     
     return self;
 }
 
-- (void)setState:(AudioPlayerState *)state
+- (void)setControlPolicy:(AudioPlayerControlPolicy *)controlPolicy
 {
-    _state = state;
+    //原来的控制策略失效
+    _controlPolicy.player = nil;
     
-    state.player = self;
+    _controlPolicy = controlPolicy;
+    
+    _controlPolicy.player = self;
 }
 
-- (void)setStartPolicy:(id<AudioPlayerStartPolicy>)startPolicy
+/* 开始播放 */
+- (void)start
 {
-    _startPolicy = startPolicy;
-    
-    startPolicy.player = self;
+    //子类实现播放
 }
 
-- (void)setStopPolicy:(id<AudioPlayerStopPolicy>)stopPolicy
+/* 停止播放 */
+- (void)stop
 {
-    _stopPolicy = stopPolicy;
-    
-    stopPolicy.player = self;
+    //子类实现停止
 }
 
 @end
+
+

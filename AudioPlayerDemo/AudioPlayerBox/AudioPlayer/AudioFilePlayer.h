@@ -17,15 +17,3 @@
 @end
 
 
-@interface AudioFilePlayerStartPolicy : NSObject <AudioPlayerStartPolicy>
-
-@property (weak, nonatomic) AudioFilePlayer *player;
-
-@end
-
-
-@interface AudioFilePlayerStopPolicy : NSObject <AudioPlayerStopPolicy>
-
-@property (weak, nonatomic) AudioFilePlayer *player;
-
-@end

@@ -24,7 +24,7 @@
     AudioFilePlayer *player = [[AudioFilePlayer alloc] initWithUrl:url];
     self.player = player;
     
-    [player.state start];
+    [player.controlPolicy start];
 }
 
 - (void)dealloc
@@ -66,8 +66,8 @@
     {
         if([keyPath isEqualToString:@"state"])
         {
-            AudioPlayerState *state = self.player.state;
-            NSLog(@"状态改变为：%@",state);
+            AudioPlayer_State state = self.player.state;
+            NSLog(@"状态改变为：%ld",state);
         }
     }
 }

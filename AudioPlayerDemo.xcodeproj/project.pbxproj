@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4555AC081F21D5EB00351397 /* Callback.m in Sources */ = {isa = PBXBuildFile; fileRef = 4555AC011F21D5EB00351397 /* Callback.m */; };
+		4555AC091F21D5EB00351397 /* NSError+MC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4555AC041F21D5EB00351397 /* NSError+MC.m */; };
+		4555AC0A1F21D5EB00351397 /* MCProtocolCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4555AC071F21D5EB00351397 /* MCProtocolCommand.m */; };
+		4555AC0F1F21EB9700351397 /* AudioPlayerControlPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4555AC0E1F21EB9700351397 /* AudioPlayerControlPolicy.m */; };
+		4555AC121F21EC2200351397 /* AudioFilePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4555AC101F21EC2200351397 /* AudioFilePlayer.m */; };
 		45B357ED1EF9147900CEF767 /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B357EC1EF9147900CEF767 /* AudioPlayer.m */; };
 		45D8CE921EAF2207003CE137 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D8CE911EAF2207003CE137 /* main.m */; };
 		45D8CE951EAF2207003CE137 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D8CE941EAF2207003CE137 /* AppDelegate.m */; };
@@ -14,11 +19,20 @@
 		45D8CE9B1EAF2207003CE137 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45D8CE991EAF2207003CE137 /* Main.storyboard */; };
 		45D8CE9D1EAF2207003CE137 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45D8CE9C1EAF2207003CE137 /* Assets.xcassets */; };
 		45D8CEA01EAF2207003CE137 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45D8CE9E1EAF2207003CE137 /* LaunchScreen.storyboard */; };
-		45D8CEB51EAF2243003CE137 /* AudioFilePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D8CEAA1EAF2243003CE137 /* AudioFilePlayer.m */; };
-		45D8CEB71EAF2243003CE137 /* AudioPlayerState.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D8CEB01EAF2243003CE137 /* AudioPlayerState.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4555AC001F21D5EB00351397 /* Callback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Callback.h; sourceTree = "<group>"; };
+		4555AC011F21D5EB00351397 /* Callback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Callback.m; sourceTree = "<group>"; };
+		4555AC031F21D5EB00351397 /* NSError+MC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+MC.h"; sourceTree = "<group>"; };
+		4555AC041F21D5EB00351397 /* NSError+MC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+MC.m"; sourceTree = "<group>"; };
+		4555AC061F21D5EB00351397 /* MCProtocolCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCProtocolCommand.h; sourceTree = "<group>"; };
+		4555AC071F21D5EB00351397 /* MCProtocolCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCProtocolCommand.m; sourceTree = "<group>"; };
+		4555AC0B1F21D77C00351397 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		4555AC0D1F21EB9700351397 /* AudioPlayerControlPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayerControlPolicy.h; sourceTree = "<group>"; };
+		4555AC0E1F21EB9700351397 /* AudioPlayerControlPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayerControlPolicy.m; sourceTree = "<group>"; };
+		4555AC101F21EC2200351397 /* AudioFilePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioFilePlayer.m; sourceTree = "<group>"; };
+		4555AC111F21EC2200351397 /* AudioFilePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFilePlayer.h; sourceTree = "<group>"; };
 		45B357EC1EF9147900CEF767 /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayer.m; sourceTree = "<group>"; };
 		45D8CE8D1EAF2207003CE137 /* AudioPlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioPlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45D8CE911EAF2207003CE137 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -30,11 +44,7 @@
 		45D8CE9C1EAF2207003CE137 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45D8CE9F1EAF2207003CE137 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		45D8CEA11EAF2207003CE137 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		45D8CEA91EAF2243003CE137 /* AudioFilePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFilePlayer.h; sourceTree = "<group>"; };
-		45D8CEAA1EAF2243003CE137 /* AudioFilePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioFilePlayer.m; sourceTree = "<group>"; };
 		45D8CEAE1EAF2243003CE137 /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer.h; sourceTree = "<group>"; };
-		45D8CEAF1EAF2243003CE137 /* AudioPlayerState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayerState.h; sourceTree = "<group>"; };
-		45D8CEB01EAF2243003CE137 /* AudioPlayerState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayerState.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,9 +58,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4555ABFF1F21D5EB00351397 /* Callback */ = {
+			isa = PBXGroup;
+			children = (
+				4555AC001F21D5EB00351397 /* Callback.h */,
+				4555AC011F21D5EB00351397 /* Callback.m */,
+			);
+			path = Callback;
+			sourceTree = "<group>";
+		};
+		4555AC021F21D5EB00351397 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				4555AC031F21D5EB00351397 /* NSError+MC.h */,
+				4555AC041F21D5EB00351397 /* NSError+MC.m */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		4555AC051F21D5EB00351397 /* Command */ = {
+			isa = PBXGroup;
+			children = (
+				4555AC061F21D5EB00351397 /* MCProtocolCommand.h */,
+				4555AC071F21D5EB00351397 /* MCProtocolCommand.m */,
+			);
+			path = Command;
+			sourceTree = "<group>";
+		};
+		4555AC0C1F21EB8500351397 /* AudioPlayerPolicy */ = {
+			isa = PBXGroup;
+			children = (
+				4555AC0D1F21EB9700351397 /* AudioPlayerControlPolicy.h */,
+				4555AC0E1F21EB9700351397 /* AudioPlayerControlPolicy.m */,
+			);
+			path = AudioPlayerPolicy;
+			sourceTree = "<group>";
+		};
 		45B357EE1EF91AB500CEF767 /* Universe */ = {
 			isa = PBXGroup;
 			children = (
+				4555ABFF1F21D5EB00351397 /* Callback */,
+				4555AC021F21D5EB00351397 /* Error */,
+				4555AC051F21D5EB00351397 /* Command */,
 			);
 			path = Universe;
 			sourceTree = "<group>";
@@ -93,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				45D8CE911EAF2207003CE137 /* main.m */,
+				4555AC0B1F21D77C00351397 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -100,28 +150,19 @@
 		45D8CEA71EAF2243003CE137 /* AudioPlayerBox */ = {
 			isa = PBXGroup;
 			children = (
+				4555AC0C1F21EB8500351397 /* AudioPlayerPolicy */,
 				45D8CEAD1EAF2243003CE137 /* AudioPlayer */,
-				45D8CEA81EAF2243003CE137 /* AudioFilePlayer */,
 			);
 			path = AudioPlayerBox;
-			sourceTree = "<group>";
-		};
-		45D8CEA81EAF2243003CE137 /* AudioFilePlayer */ = {
-			isa = PBXGroup;
-			children = (
-				45D8CEA91EAF2243003CE137 /* AudioFilePlayer.h */,
-				45D8CEAA1EAF2243003CE137 /* AudioFilePlayer.m */,
-			);
-			path = AudioFilePlayer;
 			sourceTree = "<group>";
 		};
 		45D8CEAD1EAF2243003CE137 /* AudioPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				4555AC111F21EC2200351397 /* AudioFilePlayer.h */,
+				4555AC101F21EC2200351397 /* AudioFilePlayer.m */,
 				45D8CEAE1EAF2243003CE137 /* AudioPlayer.h */,
 				45B357EC1EF9147900CEF767 /* AudioPlayer.m */,
-				45D8CEAF1EAF2243003CE137 /* AudioPlayerState.h */,
-				45D8CEB01EAF2243003CE137 /* AudioPlayerState.m */,
 			);
 			path = AudioPlayer;
 			sourceTree = "<group>";
@@ -198,11 +239,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				45D8CE981EAF2207003CE137 /* ViewController.m in Sources */,
+				4555AC081F21D5EB00351397 /* Callback.m in Sources */,
+				4555AC0A1F21D5EB00351397 /* MCProtocolCommand.m in Sources */,
 				45B357ED1EF9147900CEF767 /* AudioPlayer.m in Sources */,
 				45D8CE951EAF2207003CE137 /* AppDelegate.m in Sources */,
+				4555AC0F1F21EB9700351397 /* AudioPlayerControlPolicy.m in Sources */,
 				45D8CE921EAF2207003CE137 /* main.m in Sources */,
-				45D8CEB71EAF2243003CE137 /* AudioPlayerState.m in Sources */,
-				45D8CEB51EAF2243003CE137 /* AudioFilePlayer.m in Sources */,
+				4555AC091F21D5EB00351397 /* NSError+MC.m in Sources */,
+				4555AC121F21EC2200351397 /* AudioFilePlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +368,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = AudioPlayerdemo/PrefixHeader.pch;
 				INFOPLIST_FILE = AudioPlayerDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xuetangx.AudioPlayerDemo;
@@ -335,6 +380,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = AudioPlayerdemo/PrefixHeader.pch;
 				INFOPLIST_FILE = AudioPlayerDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xuetangx.AudioPlayerDemo;
