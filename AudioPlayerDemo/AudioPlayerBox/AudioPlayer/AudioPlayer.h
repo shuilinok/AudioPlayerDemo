@@ -4,17 +4,10 @@
 
 
 #import <Foundation/Foundation.h>
-#import "AudioPlayerControlPolicy.h"
+#import "AudioPlayerDefine.h"
 
-//播放器状态
-typedef NS_ENUM(NSUInteger, AudioPlayer_State) {
-    AudioPlayer_State_None = 0,        //初始状态
-    AudioPlayer_State_Starting,        //启动中
-    AudioPlayer_State_Started,         //已启动
-    AudioPlayer_State_Stopping,        //停止中
-    AudioPlayer_State_Stopped,         //已停止
-};
 
+@class AudioPlayerProxy;
 
 //声音播放器
 @interface AudioPlayer : NSObject
@@ -25,8 +18,8 @@ typedef NS_ENUM(NSUInteger, AudioPlayer_State) {
 /* 错误发生，KVO */
 @property (strong, nonatomic) NSError *error;
 
-/* 播放器控制策略 */
-@property (strong, nonatomic) AudioPlayerControlPolicy *controlPolicy;
+/* 播放器控制代理 */
+@property (strong, nonatomic) AudioPlayerProxy *proxy;
 
 /* 开始播放 */
 - (void)start;
