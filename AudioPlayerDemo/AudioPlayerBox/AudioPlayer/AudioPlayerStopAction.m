@@ -18,17 +18,12 @@
     
     if(state == AudioPlayer_State_Starting || state == AudioPlayer_State_Started)
     {
-        [self stopRun];
+        [self.subAction run];
     }
     else
     {
         
     }
-}
-
-- (void)stopRun
-{
-    
 }
 
 @end

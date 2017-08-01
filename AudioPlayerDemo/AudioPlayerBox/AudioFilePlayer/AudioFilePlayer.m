@@ -6,6 +6,7 @@
 
 #import "AudioFilePlayer.h"
 
+
 @interface AudioFilePlayer ()
 
 @property (strong, nonatomic) NSString *url;
@@ -14,15 +15,6 @@
 
 
 @implementation AudioFilePlayer
-
-+ (instancetype)createWithUrl:(NSString *)url
-{
-    AudioFilePlayer *player = [[AudioFilePlayer alloc] initWithUrl:url];
-    player.startAction = [[AudioFilePlayerCheckStartAction alloc] initWithPlayer:player];
-    player.stopAction = [[AudioFilePlayerStopAction alloc] initWithPlayer:player];
-    
-    return player;
-}
 
 - (instancetype)initWithUrl:(NSString *)url
 {

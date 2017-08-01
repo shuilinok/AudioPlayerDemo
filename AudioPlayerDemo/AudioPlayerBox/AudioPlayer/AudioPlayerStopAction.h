@@ -10,6 +10,4 @@
 
 @interface AudioPlayerStopAction : AudioPlayerAction
 
-- (void)stopRun;
-
 @end

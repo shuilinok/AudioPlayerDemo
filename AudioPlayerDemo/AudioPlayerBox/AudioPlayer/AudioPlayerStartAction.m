@@ -24,7 +24,7 @@
     
     if(state == AudioPlayer_State_None || state == AudioPlayer_State_Stopped)
     {
-        [self startRun];
+        [self.subAction run];
     }
     else if(state == AudioPlayer_State_Stopping)
     {
@@ -46,14 +46,9 @@
         {
             self.autoStartWhenStopped = NO;
             
-            [self startRun];
+            [self.subAction run];
         }
     }
-}
-
-- (void)startRun
-{
-    
 }
 
 @end

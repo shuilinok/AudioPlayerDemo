@@ -10,12 +10,13 @@
 
 @implementation AudioFilePlayerStopAction
 
-- (void)stopRun
+- (void)run
 {
     self.player.state = AudioPlayer_State_Stopping;
     
     //停止播放操作
     //...
+    NSLog(@"stopping");
     
     self.player.state = AudioPlayer_State_Stopped;
 }

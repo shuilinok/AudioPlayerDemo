@@ -1,5 +1,5 @@
 //
-//  AudioPlayerStartAction.h
+//  AudioFilePlayerStartActionProxy.h
 //  AudioPlayerDemo
 //
 //  Created by shuilin on 01/08/2017.
@@ -8,6 +8,6 @@
 
 #import "AudioPlayerAction.h"
 
-@interface AudioPlayerStartAction : AudioPlayerAction
+@interface AudioFilePlayerStartActionProxy : AudioPlayerAction
 
 @end

@@ -55,6 +55,20 @@
     [self beginObserve];
 }
 
+- (void)setIsCancel:(BOOL)isCancel
+{
+    _isCancel = isCancel;
+    
+    self.subAction.isCancel = isCancel;
+}
+
+- (void)setSubAction:(AudioPlayerAction *)subAction
+{
+    _subAction = subAction;
+    
+    _subAction.isCancel = self.isCancel;
+}
+
 //开始观察
 - (void)beginObserve
 {

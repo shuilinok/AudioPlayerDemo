@@ -17,6 +17,8 @@
 
 @property (assign, nonatomic) BOOL isCancel;
 
+@property (strong, nonatomic) AudioPlayerAction *subAction;
+
 - (void)run;
 
 - (void)handleChangedState:(AudioPlayer_State)state;

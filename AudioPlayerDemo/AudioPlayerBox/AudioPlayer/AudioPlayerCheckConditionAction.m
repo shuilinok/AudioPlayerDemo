@@ -1,16 +1,16 @@
 //
-//  AudioPlayerCheckStartAction.m
+//  AudioPlayerCheckConditionAction.m
 //  AudioPlayerDemo
 //
 //  Created by shuilin on 01/08/2017.
 //  Copyright © 2017 xuetang. All rights reserved.
 //
 
-#import "AudioPlayerCheckStartAction.h"
+#import "AudioPlayerCheckConditionAction.h"
 
-@implementation AudioPlayerCheckStartAction
+@implementation AudioPlayerCheckConditionAction
 
-- (void)startRun
+- (void)run
 {
     //检查网络播放设置和当前网络环境
     [self check:^(NSError *error) {
@@ -19,7 +19,7 @@
         {
             if(!self.isCancel)
             {
-                [self checkStartRun];
+                [self.subAction run];
             }
             else
             {
@@ -31,18 +31,15 @@
         {
             self.player.error = error;
         }
-    
+        
     }];
 }
 
 - (void)check:(ResultCallback)callback
 {
-    callback(nil);
-}
-
-- (void)checkStartRun
-{
+    NSLog(@"checking");
     
+    callback(nil);
 }
 
 @end

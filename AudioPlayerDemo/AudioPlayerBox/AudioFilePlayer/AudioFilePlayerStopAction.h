@@ -6,8 +6,8 @@
 //  Copyright © 2017 xuetang. All rights reserved.
 //
 
-#import "AudioPlayerStopAction.h"
+#import "AudioPlayerAction.h"
 
-@interface AudioFilePlayerStopAction : AudioPlayerStopAction
+@interface AudioFilePlayerStopAction : AudioPlayerAction
 
 @end
