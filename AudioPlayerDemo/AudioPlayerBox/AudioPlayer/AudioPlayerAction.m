@@ -1,24 +1,21 @@
 //
-//  AudioPlayerProxy.m
+//  AudioPlayerAction.m
 //  AudioPlayerDemo
 //
-//  Created by shuilin on 26/07/2017.
+//  Created by shuilin on 28/07/2017.
 //  Copyright © 2017 xuetang. All rights reserved.
 //
 
-#import "AudioPlayerProxy.h"
+#import "AudioPlayerAction.h"
 
-@interface AudioPlayerProxy ()
+@interface AudioPlayerAction ()
 
 @property (weak, nonatomic) AudioPlayer *player;
-
-//停止后自动又开始
-@property (assign, nonatomic) BOOL autoStartWhenStopped;
 
 @end
 
 
-@implementation AudioPlayerProxy
+@implementation AudioPlayerAction
 
 - (instancetype)initWithPlayer:(AudioPlayer *)player
 {
@@ -36,39 +33,15 @@
     self.player = nil;
 }
 
-/* 开始播放 */
-- (void)start
+- (void)run
 {
-    AudioPlayer_State state = self.player.state;
     
-    if(state == AudioPlayer_State_None || state == AudioPlayer_State_Stopped)
-    {
-        [self.player start];
-    }
-    else if(state == AudioPlayer_State_Stopping)
-    {
-        //也是可以start的
-        self.autoStartWhenStopped = YES;
-    }
-    else
-    {
-        
-    }
 }
 
-/* 停止播放 */
-- (void)stop
+/* 处理状态变化 */
+- (void)handleChangedState:(AudioPlayer_State)state
 {
-    AudioPlayer_State state = self.player.state;
     
-    if(state == AudioPlayer_State_Starting || state == AudioPlayer_State_Started)
-    {
-        [self.player stop];
-    }
-    else
-    {
-        
-    }
 }
 
 - (void)setPlayer:(AudioPlayer *)player
@@ -105,19 +78,6 @@
         if([keyPath isEqualToString:@"state"])
         {
             [self handleChangedState:player.state];
-        }
-    }
-}
-
-//处理状态变化
-- (void)handleChangedState:(AudioPlayer_State)state
-{
-    if(state == AudioPlayer_State_Stopped)
-    {
-        if(self.autoStartWhenStopped)
-        {
-            self.autoStartWhenStopped = NO;
-            [self.player start];
         }
     }
 }

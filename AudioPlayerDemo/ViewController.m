@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "AudioFilePlayer.h"
-#import "AudioPlayerProxy.h"
 
 @interface ViewController ()
 @property (strong, nonatomic) AudioFilePlayer *player;
@@ -22,12 +21,11 @@
     
     NSString *url = @"http://www.xxx.com/test.mp3";
     
-    AudioFilePlayer *player = [[AudioFilePlayer alloc] initWithUrl:url];
-    AudioPlayerProxy *proxy = [[AudioPlayerProxy alloc] initWithPlayer:player];
-    player.proxy = proxy;
+    AudioFilePlayer *player = [AudioFilePlayer createWithUrl:url];
+    
     self.player = player;
     
-    [self.player.proxy start];
+    [self.player.startAction run];
 }
 
 - (void)dealloc

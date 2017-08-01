@@ -8,6 +8,11 @@
 
 #import "AudioPlayer.h"
 
+@interface AudioPlayer ()
+
+@end
+
+
 @implementation AudioPlayer
 
 - (instancetype)init
@@ -19,18 +24,6 @@
     }
     
     return self;
-}
-
-/* 开始播放 */
-- (void)start
-{
-    //子类实现播放
-}
-
-/* 停止播放 */
-- (void)stop
-{
-    //子类实现停止
 }
 
 @end

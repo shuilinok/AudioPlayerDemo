@@ -15,6 +15,15 @@
 
 @implementation AudioFilePlayer
 
++ (instancetype)createWithUrl:(NSString *)url
+{
+    AudioFilePlayer *player = [[AudioFilePlayer alloc] initWithUrl:url];
+    player.startAction = [[AudioFilePlayerCheckStartAction alloc] initWithPlayer:player];
+    player.stopAction = [[AudioFilePlayerStopAction alloc] initWithPlayer:player];
+    
+    return player;
+}
+
 - (instancetype)initWithUrl:(NSString *)url
 {
     self = [super init];
@@ -26,25 +35,6 @@
     return self;
 }
 
-- (void)start
-{
-    self.state = AudioPlayer_State_Starting;
-    
-    //启动播放操作
-    //...
-    
-    self.state = AudioPlayer_State_Started;
-}
-
-- (void)stop
-{
-    self.state = AudioPlayer_State_Stopping;
-    
-    //停止播放操作
-    //...
-    
-    self.state = AudioPlayer_State_Stopped;
-}
 @end
 
 
