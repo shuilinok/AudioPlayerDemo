@@ -7,30 +7,18 @@
 //
 
 #import "AudioPlayerCheckConditionAction.h"
+#import "AudioPlayer.h"
 
 @implementation AudioPlayerCheckConditionAction
 
-- (void)run
+- (void)run:(id)context callback:(ResultCallback)callback
 {
+    self.callback = callback;
+    
     //检查网络播放设置和当前网络环境
     [self check:^(NSError *error) {
         
-        if(error.code == noErr)
-        {
-            if(!self.isCancel)
-            {
-                [self.subAction run];
-            }
-            else
-            {
-                NSError *error = [NSError errorWithCode:100 xtmsg:@"启动操作被取消"];
-                self.player.error = error;
-            }
-        }
-        else
-        {
-            self.player.error = error;
-        }
+        [self callbackError:error];
         
     }];
 }

@@ -6,8 +6,14 @@
 //  Copyright © 2017 xuetang. All rights reserved.
 //
 
-#import "AudioPlayerAction.h"
+#import "MCAction.h"
 
-@interface AudioFilePlayerStartAction : AudioPlayerAction
+@interface AudioFilePlayerStartAction : MCAction
+
+@end
+
+
+
+@interface AudioFilePlayerFullStartAction : MCAction
 
 @end

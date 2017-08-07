@@ -6,8 +6,6 @@
 #import <Foundation/Foundation.h>
 
 
-@class AudioPlayerAction;
-
 //播放器状态
 typedef NS_ENUM(NSUInteger, AudioPlayer_State) {
     AudioPlayer_State_None = 0,        //初始状态
@@ -16,6 +14,15 @@ typedef NS_ENUM(NSUInteger, AudioPlayer_State) {
     AudioPlayer_State_Stopping,        //停止中
     AudioPlayer_State_Stopped,         //已停止
 };
+
+@interface AudioPlayerParamContext : NSObject
+
+@property (strong, nonatomic) NSString *startActionName;
+
+@property (strong, nonatomic) NSString *stopActionName;
+
+@end
+
 
 
 //声音播放器
@@ -27,9 +34,15 @@ typedef NS_ENUM(NSUInteger, AudioPlayer_State) {
 /* 错误发生，KVO */
 @property (strong, nonatomic) NSError *error;
 
-@property (strong, nonatomic) AudioPlayerAction *startAction;
+@property (strong, nonatomic) AudioPlayerParamContext *paramContext;
 
-@property (strong, nonatomic) AudioPlayerAction *stopAction;
+@property (readonly, strong, nonatomic) MCAction *startAction;
+
+@property (readonly, strong, nonatomic) MCAction *stopAction;
+
+- (void)start;
+
+- (void)stop;
 
 @end
 

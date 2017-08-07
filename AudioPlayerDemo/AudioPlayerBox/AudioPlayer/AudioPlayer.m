@@ -10,6 +10,10 @@
 
 @interface AudioPlayer ()
 
+@property (strong, nonatomic) MCAction *startAction;
+
+@property (strong, nonatomic) MCAction *stopAction;
+
 @end
 
 
@@ -26,6 +30,28 @@
     return self;
 }
 
+- (void)start
+{
+    self.startAction = [MCActionCreator createAction:self.paramContext.startActionName];
+    
+    [self.startAction run:self callback:^(NSError *error) {
+        
+    }];
+}
+
+- (void)stop
+{
+    self.stopAction = [MCActionCreator createAction:self.paramContext.stopActionName];
+    
+    [self.stopAction run:self callback:^(NSError *error) {
+        
+    }];
+}
+
 @end
 
 
+@implementation AudioPlayerParamContext
+
+
+@end

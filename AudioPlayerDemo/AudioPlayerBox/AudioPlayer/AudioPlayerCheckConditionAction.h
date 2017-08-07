@@ -6,8 +6,8 @@
 //  Copyright © 2017 xuetang. All rights reserved.
 //
 
-#import "AudioPlayerAction.h"
+#import <Foundation/Foundation.h>
 
-@interface AudioPlayerCheckConditionAction : AudioPlayerAction
+@interface AudioPlayerCheckConditionAction : MCAction
 
 @end
