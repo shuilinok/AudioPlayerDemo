@@ -21,12 +21,10 @@
     
     NSString *url = @"http://www.xxx.com/test.mp3";
     
-    AudioFilePlayer *player = [[AudioFilePlayer alloc] initWithUrl:url];
-    
-    AudioPlayerParamContext *paramContext = [[AudioPlayerParamContext alloc] init];
-    paramContext.startActionName = @"AudioFilePlayerFullStartAction";
-    paramContext.stopActionName = @"AudioFilePlayerFullStopAction";
-    player.paramContext = paramContext;
+    AudioFilePlayer *player = [[AudioFilePlayer alloc] init];
+    player.paramContext.url = url;
+    player.paramContext.startMode = 2;
+    player.paramContext.stopMode = 2;
     
     self.player = player;
     

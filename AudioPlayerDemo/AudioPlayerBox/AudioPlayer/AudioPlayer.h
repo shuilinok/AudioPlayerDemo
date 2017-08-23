@@ -17,9 +17,9 @@ typedef NS_ENUM(NSUInteger, AudioPlayer_State) {
 
 @interface AudioPlayerParamContext : NSObject
 
-@property (strong, nonatomic) NSString *startActionName;
+@property (assign, nonatomic) NSUInteger startMode;//0直接启动，1检查状态启动，2检查状态和条件启动
 
-@property (strong, nonatomic) NSString *stopActionName;
+@property (assign, nonatomic) NSUInteger stopMode;
 
 @end
 
@@ -34,15 +34,15 @@ typedef NS_ENUM(NSUInteger, AudioPlayer_State) {
 /* 错误发生，KVO */
 @property (strong, nonatomic) NSError *error;
 
-@property (strong, nonatomic) AudioPlayerParamContext *paramContext;
-
-@property (readonly, strong, nonatomic) MCAction *startAction;
-
-@property (readonly, strong, nonatomic) MCAction *stopAction;
+@property (readonly, strong, nonatomic) AudioPlayerParamContext *paramContext;
 
 - (void)start;
 
 - (void)stop;
+
+- (void)cancelStart;
+
+- (void)cancelStop;
 
 @end
 

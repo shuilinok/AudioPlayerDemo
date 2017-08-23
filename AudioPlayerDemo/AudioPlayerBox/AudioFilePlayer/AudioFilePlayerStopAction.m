@@ -43,7 +43,7 @@
     AudioFilePlayer *player = context;
     
     //如果启动操作还在进行，则取消
-    [player.startAction cancel:0];
+    [player cancelStart];
     
     AudioPlayerCheckStopAction *checkAction = [[AudioPlayerCheckStopAction alloc] init];
     self.checkAction = checkAction;

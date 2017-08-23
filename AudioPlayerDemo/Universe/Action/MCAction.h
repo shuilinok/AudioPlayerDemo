@@ -28,9 +28,3 @@
 
 @end
 
-
-@interface MCActionCreator : NSObject
-
-+ (MCAction *)createAction:(NSString *)actionName;
-
-@end

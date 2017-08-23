@@ -6,12 +6,16 @@
 #import <Foundation/Foundation.h>
 #import "AudioPlayer.h"
 
+@interface AudioFilePlayerParamContext : AudioPlayerParamContext
+
+@property (strong, nonatomic) NSString *url;
+
+@end
+
 //声音文件播放器
 @interface AudioFilePlayer : AudioPlayer
 
-@property (readonly, strong, nonatomic) NSString *url;
-
-- (instancetype)initWithUrl:(NSString *)url;
+@property (readonly, strong, nonatomic) AudioFilePlayerParamContext *paramContext;
 
 @end
 
