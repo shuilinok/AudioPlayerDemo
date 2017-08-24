@@ -34,6 +34,8 @@
 		4555AC061F21D5EB00351397 /* MCProtocolCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCProtocolCommand.h; sourceTree = "<group>"; };
 		4555AC071F21D5EB00351397 /* MCProtocolCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCProtocolCommand.m; sourceTree = "<group>"; };
 		4555AC0B1F21D77C00351397 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		4564EB291F4E72F100F62DE1 /* AudioPlayer_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer_Private.h; sourceTree = "<group>"; };
+		4564EB2A1F4E746A00F62DE1 /* AudioFilePlayer_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFilePlayer_Private.h; sourceTree = "<group>"; };
 		456648F61F316DA900BF057E /* MCAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCAction.h; sourceTree = "<group>"; };
 		456648F71F316DA900BF057E /* MCAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCAction.m; sourceTree = "<group>"; };
 		458D22951F38511500ACE098 /* AudioPlayerCheckStartAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayerCheckStartAction.h; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			children = (
 				459F12ED1F2B1A4000C5ADC2 /* AudioFilePlayer.h */,
 				459F12EE1F2B1A4000C5ADC2 /* AudioFilePlayer.m */,
+				4564EB2A1F4E746A00F62DE1 /* AudioFilePlayer_Private.h */,
 				45AC735B1F3060FA00122F61 /* AudioFilePlayerStartAction.h */,
 				45AC735C1F3060FA00122F61 /* AudioFilePlayerStartAction.m */,
 				45AC73551F304D3A00122F61 /* AudioFilePlayerStopAction.h */,
@@ -190,6 +193,7 @@
 			children = (
 				45D8CEAE1EAF2243003CE137 /* AudioPlayer.h */,
 				45B357EC1EF9147900CEF767 /* AudioPlayer.m */,
+				4564EB291F4E72F100F62DE1 /* AudioPlayer_Private.h */,
 				45AC73581F3059DA00122F61 /* AudioPlayerCheckConditionAction.h */,
 				45AC73591F3059DA00122F61 /* AudioPlayerCheckConditionAction.m */,
 				458D22951F38511500ACE098 /* AudioPlayerCheckStartAction.h */,

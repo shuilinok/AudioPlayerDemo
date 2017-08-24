@@ -40,10 +40,6 @@ typedef NS_ENUM(NSUInteger, AudioPlayer_State) {
 
 - (void)stop;
 
-- (void)cancelStart;
-
-- (void)cancelStop;
-
 @end
 
 

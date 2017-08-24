@@ -8,6 +8,7 @@
 
 #import "AudioFilePlayerStopAction.h"
 #import "AudioFilePlayer.h"
+#import "AudioPlayer_Private.h"
 #import "AudioPlayerCheckStopAction.h"
 
 @implementation AudioFilePlayerStopAction
@@ -43,7 +44,7 @@
     AudioFilePlayer *player = context;
     
     //如果启动操作还在进行，则取消
-    [player cancelStart];
+    [player.startAction cancel:0];
     
     AudioPlayerCheckStopAction *checkAction = [[AudioPlayerCheckStopAction alloc] init];
     self.checkAction = checkAction;
