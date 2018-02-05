@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4555AC081F21D5EB00351397 /* Callback.m in Sources */ = {isa = PBXBuildFile; fileRef = 4555AC011F21D5EB00351397 /* Callback.m */; };
 		4555AC091F21D5EB00351397 /* NSError+MC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4555AC041F21D5EB00351397 /* NSError+MC.m */; };
 		4555AC0A1F21D5EB00351397 /* MCProtocolCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4555AC071F21D5EB00351397 /* MCProtocolCommand.m */; };
 		456648F81F316DA900BF057E /* MCAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 456648F71F316DA900BF057E /* MCAction.m */; };
+		4579BE4920280DD0003B571D /* FCRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4579BE4820280DD0003B571D /* FCRequest.m */; };
+		4579BE4C20280E08003B571D /* FCCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 4579BE4B20280E08003B571D /* FCCallback.m */; };
+		4579BE4F202826B3003B571D /* FCRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4579BE4E202826B3003B571D /* FCRequestManager.m */; };
+		4579BE5220283F06003B571D /* Callback.m in Sources */ = {isa = PBXBuildFile; fileRef = 4579BE5120283F06003B571D /* Callback.m */; };
 		458D22971F38511500ACE098 /* AudioPlayerCheckStartAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 458D22961F38511500ACE098 /* AudioPlayerCheckStartAction.m */; };
 		458D229A1F38512C00ACE098 /* AudioPlayerCheckStopAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 458D22991F38512C00ACE098 /* AudioPlayerCheckStopAction.m */; };
 		459F12EF1F2B1A4000C5ADC2 /* AudioFilePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 459F12EE1F2B1A4000C5ADC2 /* AudioFilePlayer.m */; };
@@ -27,8 +30,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4555AC001F21D5EB00351397 /* Callback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Callback.h; sourceTree = "<group>"; };
-		4555AC011F21D5EB00351397 /* Callback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Callback.m; sourceTree = "<group>"; };
 		4555AC031F21D5EB00351397 /* NSError+MC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+MC.h"; sourceTree = "<group>"; };
 		4555AC041F21D5EB00351397 /* NSError+MC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+MC.m"; sourceTree = "<group>"; };
 		4555AC061F21D5EB00351397 /* MCProtocolCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCProtocolCommand.h; sourceTree = "<group>"; };
@@ -38,6 +39,14 @@
 		4564EB2A1F4E746A00F62DE1 /* AudioFilePlayer_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFilePlayer_Private.h; sourceTree = "<group>"; };
 		456648F61F316DA900BF057E /* MCAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCAction.h; sourceTree = "<group>"; };
 		456648F71F316DA900BF057E /* MCAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCAction.m; sourceTree = "<group>"; };
+		4579BE4720280DD0003B571D /* FCRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FCRequest.h; sourceTree = "<group>"; };
+		4579BE4820280DD0003B571D /* FCRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FCRequest.m; sourceTree = "<group>"; };
+		4579BE4A20280E08003B571D /* FCCallback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FCCallback.h; sourceTree = "<group>"; };
+		4579BE4B20280E08003B571D /* FCCallback.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FCCallback.m; sourceTree = "<group>"; };
+		4579BE4D202826B3003B571D /* FCRequestManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FCRequestManager.h; sourceTree = "<group>"; };
+		4579BE4E202826B3003B571D /* FCRequestManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FCRequestManager.m; sourceTree = "<group>"; };
+		4579BE5020283F06003B571D /* Callback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Callback.h; sourceTree = "<group>"; };
+		4579BE5120283F06003B571D /* Callback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Callback.m; sourceTree = "<group>"; };
 		458D22951F38511500ACE098 /* AudioPlayerCheckStartAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayerCheckStartAction.h; sourceTree = "<group>"; };
 		458D22961F38511500ACE098 /* AudioPlayerCheckStartAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayerCheckStartAction.m; sourceTree = "<group>"; };
 		458D22981F38512C00ACE098 /* AudioPlayerCheckStopAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayerCheckStopAction.h; sourceTree = "<group>"; };
@@ -78,8 +87,8 @@
 		4555ABFF1F21D5EB00351397 /* Callback */ = {
 			isa = PBXGroup;
 			children = (
-				4555AC001F21D5EB00351397 /* Callback.h */,
-				4555AC011F21D5EB00351397 /* Callback.m */,
+				4579BE5020283F06003B571D /* Callback.h */,
+				4579BE5120283F06003B571D /* Callback.m */,
 			);
 			path = Callback;
 			sourceTree = "<group>";
@@ -109,6 +118,19 @@
 				456648F71F316DA900BF057E /* MCAction.m */,
 			);
 			path = Action;
+			sourceTree = "<group>";
+		};
+		4579BE4320280D2C003B571D /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				4579BE4720280DD0003B571D /* FCRequest.h */,
+				4579BE4820280DD0003B571D /* FCRequest.m */,
+				4579BE4A20280E08003B571D /* FCCallback.h */,
+				4579BE4B20280E08003B571D /* FCCallback.m */,
+				4579BE4D202826B3003B571D /* FCRequestManager.h */,
+				4579BE4E202826B3003B571D /* FCRequestManager.m */,
+			);
+			path = Custom;
 			sourceTree = "<group>";
 		};
 		459F12EC1F2B1A4000C5ADC2 /* AudioFilePlayer */ = {
@@ -155,6 +177,7 @@
 		45D8CE8F1EAF2207003CE137 /* AudioPlayerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				4579BE4320280D2C003B571D /* Custom */,
 				45B357EE1EF91AB500CEF767 /* Universe */,
 				45D8CEA71EAF2243003CE137 /* AudioPlayerBox */,
 				45D8CE931EAF2207003CE137 /* AppDelegate.h */,
@@ -278,7 +301,6 @@
 				45AC73571F304D3A00122F61 /* AudioFilePlayerStopAction.m in Sources */,
 				45D8CE981EAF2207003CE137 /* ViewController.m in Sources */,
 				45AC735A1F3059DA00122F61 /* AudioPlayerCheckConditionAction.m in Sources */,
-				4555AC081F21D5EB00351397 /* Callback.m in Sources */,
 				4555AC0A1F21D5EB00351397 /* MCProtocolCommand.m in Sources */,
 				45AC735D1F3060FA00122F61 /* AudioFilePlayerStartAction.m in Sources */,
 				456648F81F316DA900BF057E /* MCAction.m in Sources */,
@@ -286,9 +308,13 @@
 				45D8CE951EAF2207003CE137 /* AppDelegate.m in Sources */,
 				459F12EF1F2B1A4000C5ADC2 /* AudioFilePlayer.m in Sources */,
 				458D22971F38511500ACE098 /* AudioPlayerCheckStartAction.m in Sources */,
+				4579BE4F202826B3003B571D /* FCRequestManager.m in Sources */,
 				458D229A1F38512C00ACE098 /* AudioPlayerCheckStopAction.m in Sources */,
 				45D8CE921EAF2207003CE137 /* main.m in Sources */,
+				4579BE5220283F06003B571D /* Callback.m in Sources */,
+				4579BE4C20280E08003B571D /* FCCallback.m in Sources */,
 				4555AC091F21D5EB00351397 /* NSError+MC.m in Sources */,
+				4579BE4920280DD0003B571D /* FCRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
