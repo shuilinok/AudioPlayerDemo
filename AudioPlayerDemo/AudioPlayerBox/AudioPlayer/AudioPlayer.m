@@ -7,9 +7,8 @@
 //
 
 #import "AudioPlayer.h"
-#import "AudioPlayer_Private.h"
 
-@implementation AudioPlayerParamContext
+@interface AudioPlayer ()
 
 @end
 
@@ -22,20 +21,10 @@
     if(self)
     {
         self.state = AudioPlayer_State_None;
-        self.paramContext = [[AudioPlayerParamContext alloc] init];
+        
     }
     
     return self;
-}
-
-- (void)start
-{
-    //...
-}
-
-- (void)stop
-{
-   //...
 }
 
 @end

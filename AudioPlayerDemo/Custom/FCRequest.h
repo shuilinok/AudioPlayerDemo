@@ -25,13 +25,13 @@
 
 + (id)normalRequest;
 
-- (void)send:(FCCallback)callback;
+- (void)send:(FCCallback)callback;//外部调用
 
-- (void)cancel;
+- (void)cancel;//外部调用
 
-- (void)execute;//实现
+- (void)execute;//子类实现
 
-- (void)finish;
+- (void)finish;//子类调用
 
 @end
 

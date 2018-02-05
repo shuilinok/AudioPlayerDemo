@@ -14,7 +14,7 @@
 
 #import "MCProtocolCommand.h"
 #import "NSError+MC.h"
-#import "Callback.h"
-#import "MCAction.h"
+#import "FCRequest.h"
+#import "FCRequestManager.h"
 
 #endif /* PrefixHeader_pch */

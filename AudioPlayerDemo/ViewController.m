@@ -11,6 +11,9 @@
 
 @interface ViewController ()
 @property (strong, nonatomic) AudioFilePlayer *player;
+
+@property (strong, nonatomic) IBOutlet UIButton *button;
+
 @end
 
 @implementation ViewController
@@ -21,15 +24,13 @@
     
     NSString *url = @"http://www.xxx.com/test.mp3";
     
-    AudioFilePlayer *player = [[AudioFilePlayer alloc] init];
-    player.afpParamContext.url = url;
-    player.paramContext.startMode = 2;
-    player.paramContext.stopMode = 2;
+    AudioFilePlayer *player = [AudioFilePlayer fullPlayer];
+    player.url = url;
     
     self.player = player;
     
-    [player start];
-    [player stop];
+    [player.startRequest send:nil];
+    //[player.stopRequest send:nil];
 }
 
 - (void)dealloc
@@ -77,4 +78,8 @@
     }
 }
 
+- (IBAction)clickButton:(id)sender
+{
+    [self.player.stopRequest send:nil];
+}
 @end

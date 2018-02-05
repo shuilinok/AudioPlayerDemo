@@ -5,90 +5,68 @@
 
 
 #import "AudioFilePlayer.h"
-#import "AudioPlayer_Private.h"
-#import "AudioFilePlayer_Private.h"
-#import "AudioFilePlayerStartAction.h"
-#import "AudioFilePlayerStopAction.h"
-
-@implementation AudioFilePlayerParamContext
-
-@end
+#import "AudioFilePlayerRequest.h"
 
 
 @implementation AudioFilePlayer
 
-- (instancetype)init
++ (AudioFilePlayer *)fullPlayer
 {
-    self = [super init];
-    if(self)
+    AudioFilePlayer *player = [[AudioFilePlayer alloc] init];
+    
+    //构建开始请求
     {
-        self.afpParamContext = [[AudioFilePlayerParamContext alloc] init];
+        AudioPlayerCheckStateCondtionStartRequest *fullRequest = [AudioPlayerCheckStateCondtionStartRequest normalRequest];
+        
+        {
+            AudioFilePlayerStartRequest *request = [AudioFilePlayerStartRequest normalRequest];
+            request.player = player;
+            
+            fullRequest.startRequest = request;
+        }
+        
+        {
+            AudioPlayerStartCheckStateRequest *request = [AudioPlayerStartCheckStateRequest normalRequest];
+            request.player = player;
+            
+            fullRequest.checkStateRequest = request;
+        }
+        
+        {
+            AudioPlayerStartCheckConditionRequest *request = [AudioPlayerStartCheckConditionRequest normalRequest];
+            request.player = player;
+            
+            fullRequest.checkConditionRequest = request;
+        }
+        
+        
+        player.startRequest = fullRequest;
     }
     
-    return self;
+    //构建停止请求
+    {
+        AudioPlayerCheckStateStopRequest *fullRequest = [AudioPlayerCheckStateStopRequest normalRequest];
+        fullRequest.player = player;
+        
+        {
+            AudioFilePlayerStopRequest *request = [AudioFilePlayerStopRequest normalRequest];
+            request.player = player;
+            fullRequest.stopRequest = request;
+        }
+        
+        {
+            AudioPlayerStopCheckStateRequest *request = [AudioPlayerStopCheckStateRequest normalRequest];
+            request.player = player;
+            
+            fullRequest.checkStateRequest = request;
+        }
+        
+        player.stopRequest = fullRequest;
+    }
+    
+    return player;
 }
 
-- (void)start
-{
-    MCAction *startAction = nil;
-    
-    if(self.paramContext.startMode == 0)
-    {
-        AudioFilePlayerStartAction *action = [[AudioFilePlayerStartAction alloc] init];
-        startAction = action;
-    }
-    else if(self.paramContext.startMode == 1)
-    {
-        
-    }
-    else if(self.paramContext.startMode == 2)
-    {
-        AudioFilePlayerFullStartAction *action = [[AudioFilePlayerFullStartAction alloc] init];
-        startAction = action;
-    }
-    
-    if(startAction == nil)
-    {
-        abort();
-    }
-    
-    self.startAction = startAction;
-    
-    [self.startAction run:self callback:^(NSError *error) {
-        
-    }];
-}
-
-- (void)stop
-{
-    MCAction *stopAction = nil;
-    
-    if(self.paramContext.stopMode == 0)
-    {
-        AudioFilePlayerStopAction *action = [[AudioFilePlayerStopAction alloc] init];
-        stopAction = action;
-    }
-    else if(self.paramContext.stopMode == 1)
-    {
-        
-    }
-    else if(self.paramContext.stopMode == 2)
-    {
-        AudioFilePlayerFullStopAction *action = [[AudioFilePlayerFullStopAction alloc] init];
-        stopAction = action;
-    }
-    
-    if(stopAction == nil)
-    {
-        abort();
-    }
-    
-    self.stopAction = stopAction;
-    
-    [self.stopAction run:self callback:^(NSError *error) {
-        
-    }];
-}
 @end
 
 
