@@ -11,5 +11,11 @@
 
 typedef void (^FCCallback) (void);
 
+typedef void (^FCDataCallback) (id data);
+
+typedef void (^FCResultCallback) (NSError *error);
+
 void mainFCCallback(FCCallback callback);
+
+void mainFCDataCallback(FCDataCallback callback, id data);
 

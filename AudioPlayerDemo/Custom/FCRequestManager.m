@@ -12,8 +12,6 @@
 
 @property (strong, nonatomic) NSMutableArray *requests;
 
-@property (strong, nonatomic) NSMutableArray *waitingRequests;
-
 @end
 
 
@@ -21,7 +19,51 @@
 
 + (instancetype)sharedInstance
 {
-    static FCRequestManager *object = nil;
+    static id object = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        object = [[[self class] alloc] init];
+    });
+    
+    return object;
+}
+
+- (id)init
+{
+    self = [super init];
+    if(self)
+    {
+        self.requests = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
+- (void)addRequest:(FCRequest *)request
+{
+    [self.requests addObject:request];
+    
+    [request execute];
+}
+
+- (void)finishRequest:(FCRequest *)request
+{
+    [self.requests removeObject:request];
+}
+
+@end
+
+
+@interface FCQueueRequestManager ()
+
+@property (strong, nonatomic) NSMutableArray *requests;
+
+@end
+
+@implementation FCQueueRequestManager
+
++ (instancetype)sharedInstance
+{
+    static id object = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         object = [[[self class] alloc] init];
@@ -39,6 +81,67 @@
         NSString *name = [NSString stringWithFormat:@"com.yourdomain.%@",className];
         
         queue = dispatch_queue_create(name.UTF8String, NULL);
+        
+        self.requests = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
+- (void)addRequest:(FCRequest *)request
+{
+    dispatch_async(queue, ^{
+        
+        [self.requests addObject:request];
+        
+        [request execute];
+        
+    });
+}
+
+- (void)finishRequest:(FCRequest *)request
+{
+    dispatch_async(queue, ^{
+        
+        [self.requests removeObject:request];
+        
+    });
+}
+
+@end
+
+
+@interface FCConcurrencyRequestManager ()
+
+@property (strong, nonatomic) NSMutableArray *requests;
+
+@property (strong, nonatomic) NSMutableArray *waitingRequests;
+
+@end
+
+
+@implementation FCConcurrencyRequestManager
+
++ (instancetype)sharedInstance
+{
+    static id object = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        object = [[[self class] alloc] init];
+    });
+    
+    return object;
+}
+
+- (id)init
+{
+    self = [super init];
+    if(self)
+    {
+        NSString *className = NSStringFromClass([self class]);
+        NSString *name = [NSString stringWithFormat:@"com.yourdomain.%@",className];
+        
+        queue = dispatch_queue_create(name.UTF8String, NULL);
+        
         self.requests = [[NSMutableArray alloc] init];
         self.waitingRequests = [[NSMutableArray alloc] init];
         

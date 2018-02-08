@@ -20,13 +20,15 @@
 
 @implementation FCRequest
 
-+ (id)normalRequest
+- (instancetype)init
 {
-    FCRequest *request = [[[self class] alloc] init];
+    self = [super init];
+    if(self)
+    {
+        self.manager = [FCRequestManager sharedInstance];//默认
+    }
     
-    request.manager = [FCRequestManager sharedInstance];
-    
-    return request;
+    return self;
 }
 
 - (void)send:(FCCallback)callback
@@ -69,11 +71,16 @@
 
 - (void)finish
 {
-    mainFCCallback(self.callback);
-    
-    self.callback = nil;
-    
-    [self.manager finishRequest:self];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        if (self.callback)
+        {
+            self.callback();
+            self.callback = nil;
+        }
+        
+        [self.manager finishRequest:self];
+    });
 }
 
 @end

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FCCallback.h"
 
-@class FCRequestManager;
+@protocol FCRequestManager;
 
 @interface FCRequest : NSObject
 
@@ -17,13 +17,11 @@
 
 @property (strong, nonatomic) NSString *msg;
 
-@property (weak, nonatomic) FCRequestManager *manager;
+@property (weak, nonatomic) id<FCRequestManager> manager;//默认FCRequestManager单例
 
 @property (assign, nonatomic) NSUInteger level;//优先级，默认0，值越大越优先
 
 @property (readonly, assign, nonatomic) BOOL bCancel;
-
-+ (id)normalRequest;
 
 - (void)send:(FCCallback)callback;//外部调用
 
@@ -34,9 +32,6 @@
 - (void)finish;//子类调用
 
 @end
-
-
-
 
 
 

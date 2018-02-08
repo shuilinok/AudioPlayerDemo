@@ -24,13 +24,12 @@
     
     NSString *url = @"http://www.xxx.com/test.mp3";
     
-    AudioFilePlayer *player = [AudioFilePlayer fullPlayer];
+    AudioFilePlayer *player = [[AudioFilePlayer alloc] init];
     player.url = url;
     
     self.player = player;
     
-    [player.startRequest send:nil];
-    //[player.stopRequest send:nil];
+    [player start];
 }
 
 - (void)dealloc
@@ -80,6 +79,18 @@
 
 - (IBAction)clickButton:(id)sender
 {
-    [self.player.stopRequest send:nil];
+    for(NSInteger i = 0; i < 10; i++)
+    {
+        if(self.player.state == AudioPlayer_State_None || self.player.state == AudioPlayer_State_Stopped)
+        {
+            [self.player start];
+        }
+        else
+        {
+            [self.player stop];
+        }
+    }
+    
 }
+
 @end

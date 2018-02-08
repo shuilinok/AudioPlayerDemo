@@ -21,11 +21,21 @@
     if(self)
     {
         self.state = AudioPlayer_State_None;
-        
     }
     
     return self;
 }
+
+- (void)start
+{
+    
+}
+
+- (void)stop
+{
+    
+}
+
 
 @end
 

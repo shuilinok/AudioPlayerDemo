@@ -18,3 +18,15 @@ void mainFCCallback(FCCallback callback)
         }
     });
 }
+
+
+void mainFCDataCallback(FCDataCallback callback, id data)
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        if (callback)
+        {
+            callback(data);
+        }
+    });
+}

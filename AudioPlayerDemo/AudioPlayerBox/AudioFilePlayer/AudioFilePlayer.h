@@ -6,14 +6,10 @@
 #import <Foundation/Foundation.h>
 #import "AudioPlayer.h"
 
-
 //声音文件播放器
 @interface AudioFilePlayer : AudioPlayer
 
 @property (strong, nonatomic) NSString *url;
 
-+ (AudioFilePlayer *)fullPlayer;
-
 @end
-
 
