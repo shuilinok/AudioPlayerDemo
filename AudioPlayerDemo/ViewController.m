@@ -7,10 +7,11 @@
 
 
 #import "ViewController.h"
-#import "AudioFilePlayer.h"
+#import "CheckAudioFilePlayer.h"
 
 @interface ViewController ()
-@property (strong, nonatomic) AudioFilePlayer *player;
+
+@property (strong, nonatomic) CheckAudioFilePlayer *player;
 
 @property (strong, nonatomic) IBOutlet UIButton *button;
 
@@ -24,11 +25,11 @@
     
     NSString *url = @"http://www.xxx.com/test.mp3";
     
-    AudioFilePlayer *player = [[AudioFilePlayer alloc] init];
+    CheckAudioFilePlayer *player = [[CheckAudioFilePlayer alloc] init];
     player.url = url;
     
     self.player = player;
-    
+
     [player start];
 }
 
@@ -56,7 +57,7 @@
     [temp removeObserver:self forKeyPath:@"state" context:NULL];
 }
 
-- (void)setPlayer:(AudioFilePlayer *)player
+- (void)setPlayer:(CheckAudioFilePlayer *)player
 {
     [self endObserve];
     

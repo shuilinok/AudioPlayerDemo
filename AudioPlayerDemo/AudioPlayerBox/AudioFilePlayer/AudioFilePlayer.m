@@ -8,7 +8,7 @@
 
 @implementation AudioFilePlayer
 
-- (void)start
+- (void)start:(AudioPlayerCancelContext *)context
 {
     AudioPlayer *player = self;
     

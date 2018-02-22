@@ -15,6 +15,13 @@ typedef NS_ENUM(NSUInteger, AudioPlayer_State) {
 };
 
 
+@interface AudioPlayerCancelContext : NSObject
+
+@property (assign, nonatomic) BOOL bCancel;
+
+@end
+
+
 //声音播放器
 @interface AudioPlayer : NSObject
 
@@ -24,7 +31,7 @@ typedef NS_ENUM(NSUInteger, AudioPlayer_State) {
 /* 错误发生，KVO */
 @property (strong, nonatomic) NSError *error;
 
-- (void)start;
+- (void)start:(AudioPlayerCancelContext *)context;
 
 - (void)stop;
 

@@ -8,6 +8,13 @@
 
 #import "AudioPlayer.h"
 
+
+@implementation AudioPlayerCancelContext
+
+@end
+
+
+
 @interface AudioPlayer ()
 
 @end
@@ -26,7 +33,7 @@
     return self;
 }
 
-- (void)start
+- (void)start:(AudioPlayerCancelContext *)context
 {
     
 }
@@ -36,8 +43,9 @@
     
 }
 
-
 @end
+
+
 
 
 

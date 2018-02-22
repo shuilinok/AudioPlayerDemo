@@ -11,21 +11,6 @@
 #import "FCRequest.h"
 
 
-@implementation AudioPlayerChecker
-
-- (void)checkStart:(AudioPlayer *)player callback:(FCResultCallback)callback
-{
-    
-}
-
-- (void)checkStop:(AudioPlayer *)player callback:(FCResultCallback)callback
-{
-    
-}
-
-@end
-
-
 //等待停止请求
 @interface AudioPlayerStoppedRequest : FCRequest
 
@@ -96,10 +81,10 @@
 @end
 
 
-@implementation AudioPlayerStateChecker
+//
+@implementation AudioPlayerChecker
 
-//返回错误码为0表示可以播放，否则不能
-- (void)checkStart:(AudioPlayer *)player callback:(FCResultCallback)callback
+- (void)checkStartState:(AudioPlayer *)player callback:(FCResultCallback)callback
 {
     AudioPlayer_State state = player.state;
     
@@ -124,7 +109,25 @@
     }
 }
 
-- (void)checkStop:(AudioPlayer *)player callback:(FCResultCallback)callback
+- (void)checkStartStateCondition:(AudioPlayer *)player callback:(FCResultCallback)callback
+{
+    [self checkStartState:player callback:^(NSError *error) {
+        
+        if(error.code == noErr)
+        {
+            //检查网络播放设置和当前网络环境
+            NSError *error = [NSError errorWithCode:0 xtmsg:@"Check OK"];
+            
+            callback(error);
+        }
+        else
+        {
+            callback(error);
+        }
+    }];
+}
+
+- (void)checkStopState:(AudioPlayer *)player callback:(FCResultCallback)callback
 {
     AudioPlayer_State state = player.state;
     
@@ -137,42 +140,6 @@
         NSError *error = [NSError errorWithCode:1 xtmsg:@"状态不对，不能停止"];
         callback(error);
     }
-}
-
-@end
-
-
-@implementation AudioPlayerStateConditionChecker
-
-- (void)checkStart:(AudioPlayer *)player callback:(FCResultCallback)callback
-{
-    AudioPlayerStateChecker *checker = [[AudioPlayerStateChecker alloc] init];
-    
-    [checker checkStart:player callback:^(NSError *error) {
-       
-        if(error.code == noErr)
-        {
-            //检查网络播放设置和当前网络环境
-            NSError *error = [NSError errorWithCode:0 xtmsg:@"Check OK"];
-            
-            callback(error);
-        }
-        else
-        {
-            callback(error);
-        }
-        
-    }];
-}
-
-- (void)checkStop:(AudioPlayer *)player callback:(FCResultCallback)callback
-{
-    AudioPlayerStateChecker *checker = [[AudioPlayerStateChecker alloc] init];
-    
-    [checker checkStop:player callback:^(NSError *error) {
-       
-        callback(error);
-    }];
 }
 
 @end

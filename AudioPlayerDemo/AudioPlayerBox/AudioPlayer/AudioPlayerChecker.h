@@ -14,21 +14,11 @@
 @interface AudioPlayerChecker : NSObject
 
 //返回错误码为0表示可以播放，否则不能
-- (void)checkStart:(AudioPlayer *)player callback:(FCResultCallback)callback;
+- (void)checkStartState:(AudioPlayer *)player callback:(FCResultCallback)callback;
 
-- (void)checkStop:(AudioPlayer *)player callback:(FCResultCallback)callback;
+- (void)checkStartStateCondition:(AudioPlayer *)player callback:(FCResultCallback)callback;
 
-@end
-
-
-
-@interface AudioPlayerStateChecker : AudioPlayerChecker
-
+- (void)checkStopState:(AudioPlayer *)player callback:(FCResultCallback)callback;
 
 @end
 
-
-@interface AudioPlayerStateConditionChecker : AudioPlayerChecker
-
-
-@end
