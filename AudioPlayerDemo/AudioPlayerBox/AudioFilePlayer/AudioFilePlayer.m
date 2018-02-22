@@ -5,12 +5,14 @@
 
 
 #import "AudioFilePlayer.h"
+#import "FCRequest.h"
 
-@implementation AudioFilePlayer
 
-- (void)start:(AudioPlayerCancelContext *)context
+@implementation AudioFilePlayerStartRequest
+
+- (void)execute
 {
-    AudioPlayer *player = self;
+    AudioPlayer *player = self.player;
     
     player.state = AudioPlayer_State_Starting;
     
@@ -19,11 +21,19 @@
     NSLog(@"starting");
     
     player.state = AudioPlayer_State_Started;
+    
+    [self finish];
 }
 
-- (void)stop
+@end
+
+
+
+@implementation AudioFilePlayerStopRequest
+
+- (void)execute
 {
-    AudioPlayer *player = self;
+    AudioPlayer *player = self.player;
     
     player.state = AudioPlayer_State_Stopping;
     
@@ -33,6 +43,34 @@
     
     player.state = AudioPlayer_State_Stopped;
     
+    [self finish];
+}
+
+@end
+
+
+
+
+@implementation AudioFilePlayer
+
+- (void)start
+{
+    AudioFilePlayerStartRequest *request = [[AudioFilePlayerStartRequest alloc] init];
+    request.player = self;
+    
+    [request send:^{
+        
+    }];
+}
+
+- (void)stop
+{
+    AudioFilePlayerStopRequest *request = [[AudioFilePlayerStopRequest alloc] init];
+    request.player = self;
+    
+    [request send:^{
+        
+    }];
 }
 
 @end

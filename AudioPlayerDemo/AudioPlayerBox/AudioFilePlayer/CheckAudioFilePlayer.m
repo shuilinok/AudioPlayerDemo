@@ -10,9 +10,113 @@
 #import "AudioPlayerChecker.h"
 
 
+@implementation CheckAudioFilePlayerStartRequest
+
+- (void)execute
+{
+    CheckAudioFilePlayer *player = self.player;
+    
+    AudioPlayerChecker *checker = [[AudioPlayerChecker alloc] init];
+    
+    
+    if(player.startMode == 0)
+    {
+        AudioFilePlayerStartRequest *request = [[AudioFilePlayerStartRequest alloc] init];
+        request.player = player;
+        
+        self.subRequest = request;
+        
+        [request send:^{
+            
+        }];
+    }
+    else if(player.startMode == 1)
+    {
+        [checker checkStartState:player callback:^(NSError *error) {
+            
+            if(self.bCancel)
+            {
+                return;
+            }
+            
+            if(error.code == noErr)
+            {
+                AudioFilePlayerStartRequest *request = [[AudioFilePlayerStartRequest alloc] init];
+                request.player = player;
+                
+                self.subRequest = request;
+                
+                [request send:^{
+                    
+                }];
+            }
+        }];
+    }
+    else if(player.startMode == 2)
+    {
+        [checker checkStartStateCondition:player callback:^(NSError *error) {
+            
+            if(self.bCancel)
+            {
+                return;
+            }
+            
+            if(error.code == noErr)
+            {
+                AudioFilePlayerStartRequest *request = [[AudioFilePlayerStartRequest alloc] init];
+                request.player = player;
+                
+                self.subRequest = request;
+                
+                [request send:^{
+                    
+                }];
+            }
+        }];
+    }
+    else
+    {
+        NSLog(@"不支持的启动模式:%ld",player.startMode);
+    }
+}
+
+- (void)cancel
+{
+    [super cancel];
+    
+    [self.subRequest cancel];
+}
+@end
+
+
+@implementation CheckAudioFilePlayerStopRequest
+
+- (void)execute
+{
+    CheckAudioFilePlayer *player = self.player;
+
+    AudioPlayerChecker *checker = [[AudioPlayerChecker alloc] init];
+    
+    [checker checkStopState:player callback:^(NSError *error) {
+        
+        if(error.code == noErr)
+        {
+            AudioFilePlayerStopRequest *request = [[AudioFilePlayerStopRequest alloc] init];
+            request.player = player;
+            
+            [request send:^{
+                
+            }];
+        }
+    }];
+}
+
+@end
+
+
 @interface CheckAudioFilePlayer ()
 
-@property (strong, nonatomic) AudioPlayerCancelContext *startContext;
+@property (strong, nonatomic) FCRequest *startRequest;
 
 @end
 
@@ -32,66 +136,28 @@
 
 - (void)start
 {
-    self.startContext.bCancel = YES;
+    [self.startRequest cancel];
     
-    AudioPlayerCancelContext *context = [[AudioPlayerCancelContext alloc] init];
-    self.startContext = context;
+    CheckAudioFilePlayerStartRequest *request = [[CheckAudioFilePlayerStartRequest alloc] init];
+    request.player = self;
     
-    AudioPlayerChecker *checker = [[AudioPlayerChecker alloc] init];
+    self.startRequest = request;
     
-    if(self.startMode == 0)
-    {
-        [super start:context];
-    }
-    else if(self.startMode == 1)
-    {
-        [checker checkStartState:self callback:^(NSError *error) {
-          
-            if(context.bCancel)
-            {
-                return;
-            }
-            
-            if(error.code == noErr)
-            {
-                [super start:context];
-            }
-        }];
-    }
-    else if(self.startMode == 2)
-    {
-        [checker checkStartStateCondition:self callback:^(NSError *error) {
-            
-            if(context.bCancel)
-            {
-                return;
-            }
-            
-            if(error.code == noErr)
-            {
-                [super start:context];
-            }
-        }];
-    }
-    else
-    {
-        NSLog(@"不支持的启动模式:%ld",self.startMode);
-    }
+    [request send:^{
+        
+    }];
 }
 
 - (void)stop
 {
     //如果启动操作还在进行，则取消
-    self.startContext.bCancel = YES;
+    [self.startRequest cancel];
     
-    AudioPlayerChecker *checker = [[AudioPlayerChecker alloc] init];
+    CheckAudioFilePlayerStopRequest *request = [[CheckAudioFilePlayerStopRequest alloc] init];
+    request.player = self;
     
-    [checker checkStopState:self callback:^(NSError *error) {
+    [request send:^{
         
-        if(error.code == noErr)
-        {
-            [super stop];
-        }
     }];
 }
 

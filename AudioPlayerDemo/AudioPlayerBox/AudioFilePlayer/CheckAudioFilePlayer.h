@@ -13,6 +13,20 @@
 //启动模式，0直接启动，1检查状态启动，2检查状态和环境启动
 @property (assign, nonatomic) NSInteger startMode;
 
-- (void)start;
+@end
+
+
+@interface CheckAudioFilePlayerStartRequest : FCRequest
+
+@property (weak, nonatomic) CheckAudioFilePlayer *player;
+
+@property (strong, nonatomic) AudioFilePlayerStartRequest *subRequest;
+
+@end
+
+
+@interface CheckAudioFilePlayerStopRequest : FCRequest
+
+@property (weak, nonatomic) CheckAudioFilePlayer *player;
 
 @end

@@ -25,7 +25,7 @@
 
 - (void)send:(FCCallback)callback;//外部调用
 
-- (void)cancel;//外部调用
+- (void)cancel;//外部调用，子类重写
 
 - (void)execute;//子类实现
 
