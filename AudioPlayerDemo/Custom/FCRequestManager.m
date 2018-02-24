@@ -158,6 +158,8 @@
         {
             [self.requests addObject:request];
             
+            //NSLog(@"开始执行 %@",NSStringFromClass([request class]));
+            
             [request execute];
         }
         else    //放入等待
@@ -171,6 +173,8 @@
 - (void)finishRequest:(FCRequest *)request
 {
     dispatch_async(queue, ^{
+        
+        //NSLog(@"结束执行 %@",NSStringFromClass([request class]));
         
         if(request && [self.requests containsObject:request])
         {
@@ -215,6 +219,7 @@
         [self.requests addObject:request];
         [self.waitingRequests removeObject:request];
         
+        //NSLog(@"开始执行 %@",NSStringFromClass([request class]));
         [request execute];
     }
 }

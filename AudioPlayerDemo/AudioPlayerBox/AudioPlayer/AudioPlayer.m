@@ -7,7 +7,7 @@
 //
 
 #import "AudioPlayer.h"
-
+#import "AudioPlayerManager.h"
 
 @interface AudioPlayer ()
 
@@ -22,19 +22,45 @@
     if(self)
     {
         self.state = AudioPlayer_State_None;
+        self.manager = [AudioPlayerManager sharedInstance];
     }
     
     return self;
 }
 
-- (void)start
+- (void)start:(FCCallback)callback
 {
-    
+    [self.manager startPlayer:self callback:^{
+       
+        if(callback)
+        {
+            callback();
+        }
+        
+    }];
 }
 
-- (void)stop
+- (void)stop:(FCCallback)callback
 {
-    
+    [self.manager stopPlayer:self callback:^{
+       
+        if(callback)
+        {
+            callback();
+        }
+    }];
+}
+
+
+//子类实现
+- (FCRequest *)createStartRequest
+{
+    abort();
+}
+
+- (FCRequest *)createStopRequest
+{
+    abort();
 }
 
 @end

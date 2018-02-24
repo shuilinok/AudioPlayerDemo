@@ -15,6 +15,8 @@ typedef NS_ENUM(NSUInteger, AudioPlayer_State) {
 };
 
 
+@protocol AudioPlayerManager;
+
 //声音播放器
 @interface AudioPlayer : NSObject
 
@@ -24,11 +26,25 @@ typedef NS_ENUM(NSUInteger, AudioPlayer_State) {
 /* 错误发生，KVO */
 @property (strong, nonatomic) NSError *error;
 
-- (void)start;
+@property (weak, nonatomic) id<AudioPlayerManager> manager;//默认AudioPlayerManager
 
-- (void)stop;
+//外部调用
+- (void)start:(FCCallback)callback;
+
+- (void)stop:(FCCallback)callback;
+
+//管理器调用
+@property (strong, nonatomic) FCRequest *startRequest;
+
+//子类实现，管理器调用
+- (FCRequest *)createStartRequest;
+
+- (FCRequest *)createStopRequest;
 
 @end
+
+
+
 
 
 

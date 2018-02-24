@@ -7,11 +7,12 @@
 
 
 #import "ViewController.h"
-#import "CheckAudioFilePlayer.h"
+#import "AudioFilePlayer.h"
+#import "SumAudioPlayerManager.h"
 
 @interface ViewController ()
 
-@property (strong, nonatomic) CheckAudioFilePlayer *player;
+@property (strong, nonatomic) AudioFilePlayer *player;
 
 @property (strong, nonatomic) IBOutlet UIButton *button;
 
@@ -25,17 +26,25 @@
     
     NSString *url = @"http://www.xxx.com/test.mp3";
     
-    CheckAudioFilePlayer *player = [[CheckAudioFilePlayer alloc] init];
+    AudioFilePlayer *player = [self createPlayer];
     player.url = url;
     
     self.player = player;
 
-    [player start];
+    [player start:nil];
 }
 
 - (void)dealloc
 {
     self.player = nil;
+}
+
+- (AudioFilePlayer *)createPlayer
+{
+    AudioFilePlayer *player = [[AudioFilePlayer alloc] init];
+    player.manager = [SumAudioPlayerManager sharedInstance];
+    
+    return player;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,7 +66,7 @@
     [temp removeObserver:self forKeyPath:@"state" context:NULL];
 }
 
-- (void)setPlayer:(CheckAudioFilePlayer *)player
+- (void)setPlayer:(AudioFilePlayer *)player
 {
     [self endObserve];
     
@@ -84,11 +93,11 @@
     {
         if(self.player.state == AudioPlayer_State_None || self.player.state == AudioPlayer_State_Stopped)
         {
-            [self.player start];
+            [self.player start:nil];
         }
         else
         {
-            [self.player stop];
+            [self.player stop:nil];
         }
     }
     

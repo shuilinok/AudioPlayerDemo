@@ -5,8 +5,6 @@
 
 
 #import "AudioFilePlayer.h"
-#import "FCRequest.h"
-
 
 @implementation AudioFilePlayerStartRequest
 
@@ -49,28 +47,37 @@
 @end
 
 
+@interface AudioFilePlayer ()
 
+@end
 
 @implementation AudioFilePlayer
 
-- (void)start
+- (instancetype)init
+{
+    self = [super init];
+    if(self)
+    {
+        
+    }
+    
+    return self;
+}
+
+- (FCRequest *)createStartRequest
 {
     AudioFilePlayerStartRequest *request = [[AudioFilePlayerStartRequest alloc] init];
     request.player = self;
     
-    [request send:^{
-        
-    }];
+    return request;
 }
 
-- (void)stop
+- (FCRequest *)createStopRequest
 {
     AudioFilePlayerStopRequest *request = [[AudioFilePlayerStopRequest alloc] init];
     request.player = self;
     
-    [request send:^{
-        
-    }];
+    return request;
 }
 
 @end
