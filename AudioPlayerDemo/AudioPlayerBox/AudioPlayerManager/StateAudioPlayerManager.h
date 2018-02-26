@@ -10,6 +10,4 @@
 
 @interface StateAudioPlayerManager : NSObject <AudioPlayerManager>
 
-@property (weak, nonatomic) id<AudioPlayerManager> delegate;
-
 @end

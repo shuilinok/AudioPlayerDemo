@@ -1,23 +1,23 @@
 //
-//  AudioPlayerStoppedRequest.m
+//  AudioPlayerStartedRequest.m
 //  AudioPlayerDemo
 //
-//  Created by shuilin on 24/02/2018.
+//  Created by shuilin on 26/02/2018.
 //  Copyright © 2018 xuetang. All rights reserved.
 //
 
-#import "AudioPlayerStoppedRequest.h"
+#import "AudioPlayerStartedRequest.h"
 #import "AudioPlayer.h"
 
 //等待停止请求
-@interface AudioPlayerStoppedRequest ()
+@interface AudioPlayerStartedRequest ()
 
 @property (assign, nonatomic) BOOL observing;
 
 @end
 
 
-@implementation AudioPlayerStoppedRequest
+@implementation AudioPlayerStartedRequest
 
 - (void)dealloc
 {
@@ -58,7 +58,7 @@
 /* 处理状态变化 */
 - (void)handleChangedState:(AudioPlayer_State)state
 {
-    if(state == AudioPlayer_State_Stopped || state == AudioPlayer_State_None)
+    if(state == AudioPlayer_State_Started)
     {
         self.code = noErr;
         [self finish];
@@ -71,7 +71,7 @@
         
         AudioPlayer_State state = self.player.state;
         
-        if(state == AudioPlayer_State_Stopped || state == AudioPlayer_State_None)//已经是停止的
+        if(state == AudioPlayer_State_Started)//已经是启动的
         {
             self.code = noErr;
             [self finish];
@@ -91,5 +91,3 @@
 }
 
 @end
-
-

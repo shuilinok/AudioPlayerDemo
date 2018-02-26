@@ -17,16 +17,3 @@
 
 @end
 
-
-@interface MusicPlayerStartRequest : FCRequest
-
-@property (weak, nonatomic) MusicPlayer *player;
-
-@end
-
-
-@interface MusicPlayerStopRequest : FCRequest
-
-@property (weak, nonatomic) MusicPlayer *player;
-
-@end

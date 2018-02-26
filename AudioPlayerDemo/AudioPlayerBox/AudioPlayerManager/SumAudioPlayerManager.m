@@ -13,9 +13,9 @@
 
 @property (strong, nonatomic) SerialAudioPlayerManager *serialManager;
 
-@property (strong, nonatomic) StateAudioPlayerManager *stateManager;
-
 @property (strong, nonatomic) ConditionAudioPlayerManager *conditionManager;
+
+@property (strong, nonatomic) StateAudioPlayerManager *stateManager;
 
 @end
 
@@ -44,22 +44,19 @@
         
         StateAudioPlayerManager *stateManager = [[StateAudioPlayerManager alloc] init];
         
-        
-        serialManager.delegate = conditionManager;
-        conditionManager.delegate = stateManager;
-        stateManager.delegate = [AudioPlayerManager sharedInstance];
+        conditionManager.delegate = serialManager;
+        serialManager.delegate = stateManager;
         
         self.serialManager = serialManager;
-        self.stateManager = stateManager;
         self.conditionManager = conditionManager;
-        
+        self.stateManager = stateManager;
     }
     return self;
 }
 
 - (void)startPlayer:(AudioPlayer *)player callback:(FCCallback)callback
 {
-    [self.serialManager startPlayer:player callback:^{
+    [self.conditionManager startPlayer:player callback:^{
        
         callback();
     }];
@@ -67,7 +64,7 @@
 
 - (void)stopPlayer:(AudioPlayer *)player callback:(FCCallback)callback
 {
-    [self.serialManager stopPlayer:player callback:^{
+    [self.conditionManager stopPlayer:player callback:^{
        
         callback();
     }];

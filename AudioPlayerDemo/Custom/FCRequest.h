@@ -1,9 +1,9 @@
 //
 //  FCRequest.h
-//  AudioPlayerDemo
+//  RequestTest
 //
-//  Created by shuilin on 05/02/2018.
-//  Copyright © 2018 xuetang. All rights reserved.
+//  Created by shuilin on 26/02/2018.
+//  Copyright © 2018 xuetangX. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -17,19 +17,28 @@
 
 @property (strong, nonatomic) NSString *msg;
 
-@property (weak, nonatomic) id<FCRequestManager> manager;//默认FCRequestManager单例
+@property (strong, nonatomic) id data;//可以存储执行结果
+
+@property (weak, nonatomic) id<FCRequestManager> manager;//默认nil，直接执行
 
 @property (assign, nonatomic) NSUInteger level;//优先级，默认0，值越大越优先
 
 @property (readonly, assign, nonatomic) BOOL bCancel;
 
-- (void)send:(FCCallback)callback;//外部调用
+//外部调用
+- (void)send:(dispatch_block_t)block callback:(FCCallback)callback;
 
-- (void)cancel;//外部调用，子类重写
+- (void)cancel;
 
-- (void)execute;//子类实现
+- (void)finish;
 
-- (void)finish;//子类调用
+@end
+
+
+//管理器调用
+@interface FCRequest (Manager)
+
+- (void)execute;
 
 @end
 

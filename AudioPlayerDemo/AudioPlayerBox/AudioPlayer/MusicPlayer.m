@@ -8,11 +8,12 @@
 
 #import "MusicPlayer.h"
 
-@implementation MusicPlayerStartRequest
 
-- (void)execute
+@implementation MusicPlayer
+
+- (void)impStart:(FCRequest *)request
 {
-    MusicPlayer *player = self.player;
+    MusicPlayer *player = self;
     
     player.state = AudioPlayer_State_Starting;
     
@@ -27,45 +28,18 @@
     
     [filePlayer start:^{
         
-        [self finish];
+        [request finish];
     }];
 }
 
-@end
-
-
-@implementation MusicPlayerStopRequest
-
-- (void)execute
+- (void)impStop:(FCRequest *)request
 {
-    MusicPlayer *player = self.player;
+    MusicPlayer *player = self;
     
     [player.filePlayer stop:^{
         
-        [self finish];
+        [request finish];
     }];
-}
-@end
-
-
-
-@implementation MusicPlayer
-
-
-- (FCRequest *)createStartRequest
-{
-    MusicPlayerStartRequest *request = [[MusicPlayerStartRequest alloc] init];
-    request.player = self;
-    
-    return request;
-}
-
-- (FCRequest *)createStopRequest
-{
-    MusicPlayerStopRequest *request = [[MusicPlayerStopRequest alloc] init];
-    request.player = self;
-    
-    return request;
 }
 
 @end

@@ -16,20 +16,6 @@
 
 
 
-@interface AudioFilePlayerStartRequest : FCRequest
-
-@property (weak, nonatomic) AudioFilePlayer *player;
-
-@end
-
-
-@interface AudioFilePlayerStopRequest : FCRequest
-
-@property (weak, nonatomic) AudioFilePlayer *player;
-
-@end
-
-
 
 
 

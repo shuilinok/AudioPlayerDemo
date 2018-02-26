@@ -16,9 +16,9 @@
 
 @property (readonly, strong, nonatomic) SerialAudioPlayerManager *serialManager;
 
-@property (readonly, strong, nonatomic) StateAudioPlayerManager *stateManager;
-
 @property (readonly, strong, nonatomic) ConditionAudioPlayerManager *conditionManager;
+
+@property (readonly, strong, nonatomic) StateAudioPlayerManager *stateManager;
 
 + (instancetype)sharedInstance;
 

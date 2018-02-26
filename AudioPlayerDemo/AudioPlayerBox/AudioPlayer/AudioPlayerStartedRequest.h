@@ -1,8 +1,8 @@
 //
-//  AudioPlayerStoppedRequest.h
+//  AudioPlayerStartedRequest.h
 //  AudioPlayerDemo
 //
-//  Created by shuilin on 24/02/2018.
+//  Created by shuilin on 26/02/2018.
 //  Copyright © 2018 xuetang. All rights reserved.
 //
 
@@ -11,8 +11,8 @@
 
 @class AudioPlayer;
 
-//等待停止请求
-@interface AudioPlayerStoppedRequest : FCRequest
+//等待开始请求
+@interface AudioPlayerStartedRequest : FCRequest
 
 @property (weak, nonatomic) AudioPlayer *player;
 

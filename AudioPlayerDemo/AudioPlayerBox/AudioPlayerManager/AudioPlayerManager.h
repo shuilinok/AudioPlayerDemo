@@ -20,6 +20,5 @@
 
 @interface AudioPlayerManager : NSObject <AudioPlayerManager>
 
-+ (instancetype)sharedInstance;
 
 @end

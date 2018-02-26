@@ -8,53 +8,21 @@
 
 #import "AudioPlayerManager.h"
 
+@interface AudioPlayerManager ()
+
+@end
+
 
 @implementation AudioPlayerManager
 
-+ (instancetype)sharedInstance
-{
-    static id object = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        object = [[[self class] alloc] init];
-    });
-    
-    return object;
-}
-
 - (void)startPlayer:(AudioPlayer *)player callback:(FCCallback)callback
 {
-    [player.startRequest cancel];
-    
-    FCRequest *request = [player createStartRequest];
-    
-    player.startRequest = request;
-    
-    [request send:^{
-        
-        if(callback)
-        {
-            callback();
-        }
-        
-    }];
+    abort();
 }
 
 - (void)stopPlayer:(AudioPlayer *)player callback:(FCCallback)callback
 {
-    //如果启动操作还在进行，则取消
-    [player.startRequest cancel];
-    
-    FCRequest *request = [player createStopRequest];
-    
-    [request send:^{
-        
-        if(callback)
-        {
-            callback();
-        }
-    }];
+    abort();
 }
-
 
 @end

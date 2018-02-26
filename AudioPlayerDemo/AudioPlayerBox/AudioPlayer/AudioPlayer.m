@@ -7,9 +7,14 @@
 //
 
 #import "AudioPlayer.h"
+#import "FCRequest.h"
 #import "AudioPlayerManager.h"
 
 @interface AudioPlayer ()
+
+@property (strong, nonatomic) FCRequest *startRequest;
+
+@property (strong, nonatomic) FCRequest *stopRequest;
 
 @end
 
@@ -22,43 +27,100 @@
     if(self)
     {
         self.state = AudioPlayer_State_None;
-        self.manager = [AudioPlayerManager sharedInstance];
     }
     
     return self;
 }
 
+- (void)prepareStart:(FCCallback)callback
+{
+    if(self.manager == nil)
+    {
+        [self start:^{
+            
+            if(callback)
+            {
+                callback();
+            }
+        }];
+    }
+    else
+    {
+        [self.manager startPlayer:self callback:^{
+            
+            if(callback)
+            {
+                callback();
+            }
+        }];
+    }
+}
+
+- (void)prepareStop:(FCCallback)callback
+{
+    if(self.manager == nil)
+    {
+        [self stop:^{
+           
+            if(callback)
+            {
+                callback();
+            }
+        }];
+    }
+    else
+    {
+        [self.manager stopPlayer:self callback:^{
+            
+            if(callback)
+            {
+                callback();
+            }
+        }];
+    }
+}
+
 - (void)start:(FCCallback)callback
 {
-    [self.manager startPlayer:self callback:^{
-       
-        if(callback)
-        {
-            callback();
-        }
+    FCRequest *request = [[FCRequest alloc] init];
+    self.startRequest = request;
+    
+    [request send:^{
         
+        [self impStart:request];
+        
+    } callback:^{
+        
+        callback();
     }];
 }
 
 - (void)stop:(FCCallback)callback
 {
-    [self.manager stopPlayer:self callback:^{
-       
-        if(callback)
-        {
-            callback();
-        }
+    FCRequest *request = [[FCRequest alloc] init];
+    self.stopRequest = request;
+    
+    [request send:^{
+        
+        [self impStop:request];
+        
+    } callback:^{
+        
+        callback();
     }];
 }
 
+- (void)cancelStart
+{
+    [self.startRequest cancel];
+}
 
-//子类实现
-- (FCRequest *)createStartRequest
+- (void)impStart:(FCRequest *)request
 {
     abort();
 }
 
-- (FCRequest *)createStopRequest
+- (void)impStop:(FCRequest *)request
 {
     abort();
 }

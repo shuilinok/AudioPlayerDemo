@@ -1,9 +1,9 @@
 //
 //  FCRequest.m
-//  AudioPlayerDemo
+//  RequestTest
 //
-//  Created by shuilin on 05/02/2018.
-//  Copyright © 2018 xuetang. All rights reserved.
+//  Created by shuilin on 26/02/2018.
+//  Copyright © 2018 xuetangX. All rights reserved.
 //
 
 #import "FCRequest.h"
@@ -15,6 +15,9 @@
 
 @property (assign, nonatomic) BOOL bCancel;
 
+//要执行的代码块
+@property (copy, nonatomic) dispatch_block_t block;
+
 @end
 
 
@@ -25,15 +28,16 @@
     self = [super init];
     if(self)
     {
-        self.manager = [FCRequestManager sharedInstance];//默认
+        
     }
     
     return self;
 }
 
-- (void)send:(FCCallback)callback
+- (void)send:(dispatch_block_t)block callback:(FCCallback)callback
 {
     self.callback = callback;
+    self.block = block;
     
     if(self.bCancel)
     {
@@ -46,8 +50,14 @@
         return;
     }
     
-    [self.manager addRequest:self];
-
+    if(self.manager == nil)
+    {
+        [self execute];
+    }
+    else
+    {
+        [self.manager addRequest:self];
+    }
 }
 
 - (void)cancel
@@ -66,7 +76,7 @@
 
 - (void)execute
 {
-    abort();
+    self.block();
 }
 
 - (void)finish
@@ -79,10 +89,10 @@
             self.callback = nil;
         }
         
+        self.block = nil;
+        
         [self.manager finishRequest:self];
     });
 }
 
 @end
-
-

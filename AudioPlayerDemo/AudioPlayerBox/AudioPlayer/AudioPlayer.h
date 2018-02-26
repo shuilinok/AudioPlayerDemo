@@ -5,6 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 //播放器状态
 typedef NS_ENUM(NSUInteger, AudioPlayer_State) {
     AudioPlayer_State_None = 0,        //初始状态
@@ -13,7 +14,6 @@ typedef NS_ENUM(NSUInteger, AudioPlayer_State) {
     AudioPlayer_State_Stopping,        //停止中
     AudioPlayer_State_Stopped,         //已停止
 };
-
 
 @protocol AudioPlayerManager;
 
@@ -26,26 +26,36 @@ typedef NS_ENUM(NSUInteger, AudioPlayer_State) {
 /* 错误发生，KVO */
 @property (strong, nonatomic) NSError *error;
 
-@property (weak, nonatomic) id<AudioPlayerManager> manager;//默认AudioPlayerManager
+@property (weak, nonatomic) id<AudioPlayerManager> manager;//默认nil，直接执行
 
 //外部调用
-- (void)start:(FCCallback)callback;
+- (void)prepareStart:(FCCallback)callback;
 
-- (void)stop:(FCCallback)callback;
-
-//管理器调用
-@property (strong, nonatomic) FCRequest *startRequest;
-
-//子类实现，管理器调用
-- (FCRequest *)createStartRequest;
-
-- (FCRequest *)createStopRequest;
+- (void)prepareStop:(FCCallback)callback;
 
 @end
 
 
+//管理器调用
+@interface AudioPlayer (Manager)
+
+- (void)start:(FCCallback)callback;
+
+- (void)stop:(FCCallback)callback;
+
+- (void)cancelStart;
+
+@end
 
 
+//子类实现
+@interface AudioPlayer (SubImp)
+
+- (void)impStart:(FCRequest *)request;
+
+- (void)impStop:(FCRequest *)request;
+
+@end
 
 
 

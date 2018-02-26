@@ -17,7 +17,7 @@
         
         if(error.code == noErr)
         {
-            [self.delegate startPlayer:player callback:^{
+            [player start:^{
                
                 callback();
             }];
@@ -35,9 +35,8 @@
         
         if(error.code == noErr)
         {
-            [self.delegate stopPlayer:player callback:^{
-               
-                callback();
+            [player stop:^{
+                
             }];
         }
         else

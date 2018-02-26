@@ -55,14 +55,6 @@
 {
     [self.delegate stopPlayer:player callback:^{
         
-    }];
-    
-    //等待停止
-    AudioPlayerStoppedRequest *request = [[AudioPlayerStoppedRequest alloc] init];
-    request.player = player;
-    
-    [request send:^{
-        
         callback();
     }];
 }
