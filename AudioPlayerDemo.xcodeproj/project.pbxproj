@@ -7,16 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		452973462041089C00FCD760 /* ConditionAudioPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 452973452041089C00FCD760 /* ConditionAudioPlayerManager.m */; };
-		452973492041116A00FCD760 /* StateAudioPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 452973482041116A00FCD760 /* StateAudioPlayerManager.m */; };
 		4529734C204112A700FCD760 /* AudioPlayerStoppedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4529734B204112A700FCD760 /* AudioPlayerStoppedRequest.m */; };
 		452973512041136400FCD760 /* AudioFilePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4529734E2041136400FCD760 /* AudioFilePlayer.m */; };
 		452973522041136400FCD760 /* MusicPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 452973502041136400FCD760 /* MusicPlayer.m */; };
-		45297355204118C800FCD760 /* SerialAudioPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 45297354204118C800FCD760 /* SerialAudioPlayerManager.m */; };
 		4529735820412C9000FCD760 /* SumAudioPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4529735720412C9000FCD760 /* SumAudioPlayerManager.m */; };
 		454D0190203FFFF00020BFB7 /* AudioPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 454D018F203FFFF00020BFB7 /* AudioPlayerManager.m */; };
 		4555AC091F21D5EB00351397 /* NSError+MC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4555AC041F21D5EB00351397 /* NSError+MC.m */; };
 		4555AC0A1F21D5EB00351397 /* MCProtocolCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4555AC071F21D5EB00351397 /* MCProtocolCommand.m */; };
+		456FAB842045116E00DC4448 /* AudioPlayerStateChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 456FAB832045116E00DC4448 /* AudioPlayerStateChecker.m */; };
+		456FAB872045118000DC4448 /* AudioPlayerConditionChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 456FAB862045118000DC4448 /* AudioPlayerConditionChecker.m */; };
 		4579BE4920280DD0003B571D /* FCRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4579BE4820280DD0003B571D /* FCRequest.m */; };
 		4579BE4C20280E08003B571D /* FCCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 4579BE4B20280E08003B571D /* FCCallback.m */; };
 		4579BE4F202826B3003B571D /* FCRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4579BE4E202826B3003B571D /* FCRequestManager.m */; };
@@ -31,18 +30,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		452973442041089C00FCD760 /* ConditionAudioPlayerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConditionAudioPlayerManager.h; sourceTree = "<group>"; };
-		452973452041089C00FCD760 /* ConditionAudioPlayerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConditionAudioPlayerManager.m; sourceTree = "<group>"; };
-		452973472041116A00FCD760 /* StateAudioPlayerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StateAudioPlayerManager.h; sourceTree = "<group>"; };
-		452973482041116A00FCD760 /* StateAudioPlayerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StateAudioPlayerManager.m; sourceTree = "<group>"; };
 		4529734A204112A700FCD760 /* AudioPlayerStoppedRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioPlayerStoppedRequest.h; sourceTree = "<group>"; };
 		4529734B204112A700FCD760 /* AudioPlayerStoppedRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioPlayerStoppedRequest.m; sourceTree = "<group>"; };
 		4529734D2041136300FCD760 /* MusicPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicPlayer.h; sourceTree = "<group>"; };
 		4529734E2041136400FCD760 /* AudioFilePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioFilePlayer.m; sourceTree = "<group>"; };
 		4529734F2041136400FCD760 /* AudioFilePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFilePlayer.h; sourceTree = "<group>"; };
 		452973502041136400FCD760 /* MusicPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicPlayer.m; sourceTree = "<group>"; };
-		45297353204118C800FCD760 /* SerialAudioPlayerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SerialAudioPlayerManager.h; sourceTree = "<group>"; };
-		45297354204118C800FCD760 /* SerialAudioPlayerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SerialAudioPlayerManager.m; sourceTree = "<group>"; };
 		4529735620412C9000FCD760 /* SumAudioPlayerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SumAudioPlayerManager.h; sourceTree = "<group>"; };
 		4529735720412C9000FCD760 /* SumAudioPlayerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SumAudioPlayerManager.m; sourceTree = "<group>"; };
 		454D018E203FFFF00020BFB7 /* AudioPlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayerManager.h; sourceTree = "<group>"; };
@@ -52,6 +45,10 @@
 		4555AC061F21D5EB00351397 /* MCProtocolCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCProtocolCommand.h; sourceTree = "<group>"; };
 		4555AC071F21D5EB00351397 /* MCProtocolCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCProtocolCommand.m; sourceTree = "<group>"; };
 		4555AC0B1F21D77C00351397 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		456FAB822045116E00DC4448 /* AudioPlayerStateChecker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioPlayerStateChecker.h; sourceTree = "<group>"; };
+		456FAB832045116E00DC4448 /* AudioPlayerStateChecker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioPlayerStateChecker.m; sourceTree = "<group>"; };
+		456FAB852045118000DC4448 /* AudioPlayerConditionChecker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioPlayerConditionChecker.h; sourceTree = "<group>"; };
+		456FAB862045118000DC4448 /* AudioPlayerConditionChecker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioPlayerConditionChecker.m; sourceTree = "<group>"; };
 		4579BE4720280DD0003B571D /* FCRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FCRequest.h; sourceTree = "<group>"; };
 		4579BE4820280DD0003B571D /* FCRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FCRequest.m; sourceTree = "<group>"; };
 		4579BE4A20280E08003B571D /* FCCallback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FCCallback.h; sourceTree = "<group>"; };
@@ -90,14 +87,12 @@
 			children = (
 				454D018E203FFFF00020BFB7 /* AudioPlayerManager.h */,
 				454D018F203FFFF00020BFB7 /* AudioPlayerManager.m */,
-				452973442041089C00FCD760 /* ConditionAudioPlayerManager.h */,
-				452973452041089C00FCD760 /* ConditionAudioPlayerManager.m */,
-				452973472041116A00FCD760 /* StateAudioPlayerManager.h */,
-				452973482041116A00FCD760 /* StateAudioPlayerManager.m */,
-				45297353204118C800FCD760 /* SerialAudioPlayerManager.h */,
-				45297354204118C800FCD760 /* SerialAudioPlayerManager.m */,
 				4529735620412C9000FCD760 /* SumAudioPlayerManager.h */,
 				4529735720412C9000FCD760 /* SumAudioPlayerManager.m */,
+				456FAB822045116E00DC4448 /* AudioPlayerStateChecker.h */,
+				456FAB832045116E00DC4448 /* AudioPlayerStateChecker.m */,
+				456FAB852045118000DC4448 /* AudioPlayerConditionChecker.h */,
+				456FAB862045118000DC4448 /* AudioPlayerConditionChecker.m */,
 			);
 			path = AudioPlayerManager;
 			sourceTree = "<group>";
@@ -287,20 +282,19 @@
 				4555AC0A1F21D5EB00351397 /* MCProtocolCommand.m in Sources */,
 				45B357ED1EF9147900CEF767 /* AudioPlayer.m in Sources */,
 				45D8CE951EAF2207003CE137 /* AppDelegate.m in Sources */,
+				456FAB872045118000DC4448 /* AudioPlayerConditionChecker.m in Sources */,
 				4579BE4F202826B3003B571D /* FCRequestManager.m in Sources */,
 				452973522041136400FCD760 /* MusicPlayer.m in Sources */,
 				45D8CE921EAF2207003CE137 /* main.m in Sources */,
 				454D0190203FFFF00020BFB7 /* AudioPlayerManager.m in Sources */,
 				4529735820412C9000FCD760 /* SumAudioPlayerManager.m in Sources */,
+				456FAB842045116E00DC4448 /* AudioPlayerStateChecker.m in Sources */,
 				45A059FD2043D513001BEF5D /* AudioPlayerStartedRequest.m in Sources */,
-				452973462041089C00FCD760 /* ConditionAudioPlayerManager.m in Sources */,
 				4579BE4C20280E08003B571D /* FCCallback.m in Sources */,
 				452973512041136400FCD760 /* AudioFilePlayer.m in Sources */,
 				4555AC091F21D5EB00351397 /* NSError+MC.m in Sources */,
 				4529734C204112A700FCD760 /* AudioPlayerStoppedRequest.m in Sources */,
 				4579BE4920280DD0003B571D /* FCRequest.m in Sources */,
-				452973492041116A00FCD760 /* StateAudioPlayerManager.m in Sources */,
-				45297355204118C800FCD760 /* SerialAudioPlayerManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

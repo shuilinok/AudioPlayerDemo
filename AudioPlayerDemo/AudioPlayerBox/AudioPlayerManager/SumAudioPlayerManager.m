@@ -9,13 +9,13 @@
 #import "SumAudioPlayerManager.h"
 
 
-@interface SumAudioPlayerManager ()
+@interface SumAudioPlayerManager () <AudioPlayerConditionCheckerDelegate>
 
-@property (strong, nonatomic) SerialAudioPlayerManager *serialManager;
+@property (strong, nonatomic) AudioPlayerStateChecker *stateChecker;
 
-@property (strong, nonatomic) ConditionAudioPlayerManager *conditionManager;
+@property (strong, nonatomic) AudioPlayerConditionChecker *conditionChecker;
 
-@property (strong, nonatomic) StateAudioPlayerManager *stateManager;
+@property (strong, nonatomic) AudioPlayer *player;
 
 @end
 
@@ -38,36 +38,106 @@
     self = [super init];
     if(self)
     {
-        SerialAudioPlayerManager *serialManager = [[SerialAudioPlayerManager alloc] init];
+        AudioPlayerConditionChecker *conditionChecker = [[AudioPlayerConditionChecker alloc] init];
+        conditionChecker.delegate = self;
         
-        ConditionAudioPlayerManager *conditionManager = [[ConditionAudioPlayerManager alloc] init];
+        AudioPlayerStateChecker *stateChecker = [[AudioPlayerStateChecker alloc] init];
         
-        StateAudioPlayerManager *stateManager = [[StateAudioPlayerManager alloc] init];
+        self.conditionChecker = conditionChecker;
+        self.stateChecker = stateChecker;
         
-        conditionManager.delegate = serialManager;
-        serialManager.delegate = stateManager;
-        
-        self.serialManager = serialManager;
-        self.conditionManager = conditionManager;
-        self.stateManager = stateManager;
     }
     return self;
 }
 
-- (void)startPlayer:(AudioPlayer *)player callback:(FCCallback)callback
+- (void)checkStart:(AudioPlayer *)player request:(FCRequest *)request
 {
-    [self.conditionManager startPlayer:player callback:^{
-       
-        callback();
-    }];
+    self.player = player;
+    
+    //检查状态
+    NSError *error = [self.stateChecker checkStart:player];
+    
+    if(error.code == noErr)
+    {
+        player.state = AudioPlayer_State_Starting;
+        
+        //检查环境
+        [self.conditionChecker checkStart:player callback:^(NSError *error) {
+            
+            if(request.bCancel)
+            {
+                return;
+            }
+            
+            if(error.code == noErr)
+            {
+                [player impStart:request];
+            }
+            else
+            {
+                request.code = error.code;
+                [request finish];
+            }
+        }];
+    }
+    else
+    {
+        request.code = error.code;
+        [request finish];
+    }
 }
 
-- (void)stopPlayer:(AudioPlayer *)player callback:(FCCallback)callback
+- (void)start:(AudioPlayer *)player request:(FCRequest *)request
 {
-    [self.conditionManager stopPlayer:player callback:^{
-       
-        callback();
-    }];
+    if(self.player == nil)
+    {
+        [self checkStart:player request:request];
+    }
+    else
+    {
+        if(player == self.player)
+        {
+            [self checkStart:player request:request];
+        }
+        else//换了
+        {
+            //先把原来的停止
+            [self.player stop:^{
+                
+                [self checkStart:player request:request];
+            }];
+        }
+        
+    }
+}
+
+- (void)stop:(AudioPlayer *)player request:(FCRequest *)request
+{
+    //检查状态
+    NSError *error = [self.stateChecker checkStop:player];
+    
+    if(error.code == noErr)
+    {
+        player.state = AudioPlayer_State_Stopping;
+        
+        [player impStop:request];
+    }
+    else
+    {
+        request.code = error.code;
+        [request finish];
+    }
+}
+
+
+- (void)shouldStart
+{
+    [self.player start:nil];
+}
+
+- (void)shouldStop
+{
+    [self.player stop:nil];
 }
 
 @end

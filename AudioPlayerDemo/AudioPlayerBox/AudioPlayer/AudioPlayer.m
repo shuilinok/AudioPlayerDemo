@@ -32,87 +32,71 @@
     return self;
 }
 
-- (void)prepareStart:(FCCallback)callback
-{
-    if(self.manager == nil)
-    {
-        [self start:^{
-            
-            if(callback)
-            {
-                callback();
-            }
-        }];
-    }
-    else
-    {
-        [self.manager startPlayer:self callback:^{
-            
-            if(callback)
-            {
-                callback();
-            }
-        }];
-    }
-}
-
-- (void)prepareStop:(FCCallback)callback
-{
-    if(self.manager == nil)
-    {
-        [self stop:^{
-           
-            if(callback)
-            {
-                callback();
-            }
-        }];
-    }
-    else
-    {
-        [self.manager stopPlayer:self callback:^{
-            
-            if(callback)
-            {
-                callback();
-            }
-        }];
-    }
-}
-
 - (void)start:(FCCallback)callback
 {
+    //取消干净
+    [self.startRequest cancel];
+    [self.stopRequest cancel];
+    
     FCRequest *request = [[FCRequest alloc] init];
     self.startRequest = request;
     
     [request send:^{
         
-        [self impStart:request];
-        
+        if(self.manager == nil)
+        {
+            [self impStart:request];
+        }
+        else
+        {
+            [self.manager start:self request:request];
+        }
+
     } callback:^{
         
-        callback();
+        //启动不成功
+        if(request.code != 0 && request.code != 1)
+        {
+            self.state = AudioPlayer_State_Stopped;
+        }
+    
+        if(callback)
+        {
+            callback();
+        }
+        
     }];
 }
 
 - (void)stop:(FCCallback)callback
 {
+    //取消干净
+    [self.stopRequest cancel];
+    [self.startRequest cancel];
+    
     FCRequest *request = [[FCRequest alloc] init];
     self.stopRequest = request;
     
     [request send:^{
         
-        [self impStop:request];
+        if(self.manager == nil)
+        {
+            [self impStop:request];
+        }
+        else
+        {
+            [self.manager stop:self request:request];
+        }
         
     } callback:^{
         
-        callback();
+        //没有停止不成功
+        
+        if(callback)
+        {
+            callback();
+        }
     }];
-}
-
-- (void)cancelStart
-{
-    [self.startRequest cancel];
 }
 
 - (void)impStart:(FCRequest *)request

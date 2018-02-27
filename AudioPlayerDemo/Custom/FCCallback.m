@@ -30,3 +30,14 @@ void mainFCDataCallback(FCDataCallback callback, id data)
         }
     });
 }
+
+void mainFCResultCallback(FCResultCallback callback, NSError *error)
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        if (callback)
+        {
+            callback(error);
+        }
+    });
+}

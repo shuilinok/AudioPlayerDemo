@@ -19,3 +19,5 @@ void mainFCCallback(FCCallback callback);
 
 void mainFCDataCallback(FCDataCallback callback, id data);
 
+void mainFCResultCallback(FCResultCallback callback, NSError *error);
+

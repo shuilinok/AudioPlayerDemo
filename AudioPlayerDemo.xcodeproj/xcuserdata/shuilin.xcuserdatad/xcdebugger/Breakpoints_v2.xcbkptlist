@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AudioPlayerDemo/ViewController.m"
-            timestampString = "541331632.812418"
+            timestampString = "541412319.183686"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "31"
@@ -190,7 +190,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AudioPlayerDemo/ViewController.m"
-            timestampString = "541331632.812845"
+            timestampString = "541412319.183874"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "100"
@@ -638,59 +638,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AudioPlayerDemo/AudioPlayerBox/AudioPlayerManager/SerialAudioPlayerManager.m"
-            timestampString = "541331632.813427"
+            timestampString = "541334543.839003"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AudioPlayerDemo/AudioPlayerBox/AudioPlayerManager/SumAudioPlayerManager.m"
-            timestampString = "541331632.8134789"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "-stopPlayer:callback:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[SumAudioPlayerManager stopPlayer:callback:]"
-                  moduleName = "AudioPlayerDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/xuetang/Desktop/Space/Code/AudioPlayerDemo/AudioPlayerDemo/AudioPlayerBox/AudioPlayerManager/SumAudioPlayerManager.m"
-                  timestampString = "541145335.043394"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70"
-                  offsetFromSymbolStart = "74">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__45-[SumAudioPlayerManager stopPlayer:callback:]_block_invoke"
-                  moduleName = "AudioPlayerDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/xuetang/Desktop/Space/Code/AudioPlayerDemo/AudioPlayerDemo/AudioPlayerBox/AudioPlayerManager/SumAudioPlayerManager.m"
-                  timestampString = "541145335.045269"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70"
-                  offsetFromSymbolStart = "12">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -700,11 +654,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AudioPlayerDemo/AudioPlayerBox/AudioPlayerManager/SerialAudioPlayerManager.m"
-            timestampString = "541331632.8135231"
+            timestampString = "541334543.839391"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69">
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "-stopPlayer:callback:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -890,12 +846,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AudioPlayerDemo/ViewController.m"
-            timestampString = "541331632.813705"
+            timestampString = "541412319.184448"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "96"
             endingLineNumber = "96"
             landmarkName = "-clickButton:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AudioPlayerDemo/AudioPlayerBox/AudioPlayer/AudioPlayer.m"
+            timestampString = "541412321.31934"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "-start:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -31,7 +31,7 @@
     
     self.player = player;
 
-    [player prepareStart:nil];
+    [player start:nil];
 }
 
 - (void)dealloc
@@ -93,11 +93,11 @@
     {
         if(self.player.state == AudioPlayer_State_None || self.player.state == AudioPlayer_State_Stopped)
         {
-            [self.player prepareStart:nil];
+            [self.player start:nil];
         }
         else
         {
-            [self.player prepareStop:nil];
+            [self.player stop:nil];
         }
     }
     

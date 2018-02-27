@@ -13,30 +13,29 @@
 
 - (void)impStart:(FCRequest *)request
 {
-    MusicPlayer *player = self;
-    
-    player.state = AudioPlayer_State_Starting;
-    
     //根据musicID获取url
     //...
+    
+    if(request.bCancel)
+    {
+        return;
+    }
     
     NSString *url;
     
     AudioFilePlayer *filePlayer = [[AudioFilePlayer alloc] init];
     filePlayer.url = url;
-    player.filePlayer = filePlayer;
+    self.filePlayer = filePlayer;
     
     [filePlayer start:^{
-        
+       
         [request finish];
     }];
 }
 
 - (void)impStop:(FCRequest *)request
 {
-    MusicPlayer *player = self;
-    
-    [player.filePlayer stop:^{
+    [self.filePlayer stop:^{
         
         [request finish];
     }];

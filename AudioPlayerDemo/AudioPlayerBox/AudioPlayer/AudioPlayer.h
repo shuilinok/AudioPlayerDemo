@@ -29,26 +29,14 @@ typedef NS_ENUM(NSUInteger, AudioPlayer_State) {
 @property (weak, nonatomic) id<AudioPlayerManager> manager;//默认nil，直接执行
 
 //外部调用
-- (void)prepareStart:(FCCallback)callback;
-
-- (void)prepareStop:(FCCallback)callback;
-
-@end
-
-
-//管理器调用
-@interface AudioPlayer (Manager)
-
 - (void)start:(FCCallback)callback;
 
 - (void)stop:(FCCallback)callback;
 
-- (void)cancelStart;
-
 @end
 
 
-//子类实现
+//子类实现，管理器调用
 @interface AudioPlayer (SubImp)
 
 - (void)impStart:(FCRequest *)request;
