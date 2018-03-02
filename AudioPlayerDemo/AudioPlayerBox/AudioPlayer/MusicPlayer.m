@@ -8,11 +8,19 @@
 
 #import "MusicPlayer.h"
 
+@interface MusicPlayer ()
+
+@property (strong, nonatomic) FCRequest *playRequest;
+
+@end
+
 
 @implementation MusicPlayer
 
-- (void)impStart:(FCRequest *)request
+- (void)start:(FCRequest *)request
 {
+    self.state = AudioPlayer_State_Starting;
+    
     //根据musicID获取url
     //...
     
@@ -27,18 +35,31 @@
     filePlayer.url = url;
     self.filePlayer = filePlayer;
     
-    [filePlayer start:^{
-       
-        [request finish];
+    [filePlayer checkStart];
+    
+    [request finish];
+}
+
+//子类实现
+- (void)start
+{
+    FCRequest *request = [[FCRequest alloc] init];
+    self.playRequest = request;
+    
+    [request send:^{
+        
+        [self start:request];
+        
+    } callback:^{
+        
     }];
 }
 
-- (void)impStop:(FCRequest *)request
+- (void)stop
 {
-    [self.filePlayer stop:^{
-        
-        [request finish];
-    }];
+    [self.playRequest cancel];
+    
+    [self.filePlayer checkStop];
 }
 
 @end

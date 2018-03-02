@@ -11,9 +11,9 @@
 
 @protocol AudioPlayerManager <NSObject>
 
-- (void)start:(AudioPlayer *)player request:(FCRequest *)request;
+- (void)start:(AudioPlayer *)player;
 
-- (void)stop:(AudioPlayer *)player request:(FCRequest *)request;
+- (void)stop:(AudioPlayer *)player;
 
 @end
 

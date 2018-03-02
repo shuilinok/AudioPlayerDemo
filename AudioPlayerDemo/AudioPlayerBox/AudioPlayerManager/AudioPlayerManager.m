@@ -15,14 +15,14 @@
 
 @implementation AudioPlayerManager
 
-- (void)start:(AudioPlayer *)player request:(FCRequest *)request
+- (void)start:(AudioPlayer *)player
 {
-    [player impStart:request];
+    [player start];
 }
 
-- (void)stop:(AudioPlayer *)player request:(FCRequest *)request
+- (void)stop:(AudioPlayer *)player
 {
-    [player impStop:request];
+    [player stop];
 }
 
 @end

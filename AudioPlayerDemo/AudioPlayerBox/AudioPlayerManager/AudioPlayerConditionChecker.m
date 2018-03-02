@@ -9,6 +9,9 @@
 #import "AudioPlayerConditionChecker.h"
 
 @interface AudioPlayerConditionChecker ()
+{
+    dispatch_queue_t queue;
+}
 
 //是否打断中
 @property (assign, nonatomic) BOOL interrupting;
@@ -24,15 +27,33 @@
 
 @implementation AudioPlayerConditionChecker
 
+- (id)init
+{
+    self = [super init];
+    if(self)
+    {
+        NSString *className = NSStringFromClass([self class]);
+        NSString *name = [NSString stringWithFormat:@"com.yourdomain.%@",className];
+        queue = dispatch_queue_create(name.UTF8String, NULL);
+    }
+    return self;
+}
+
 //返回错误码为0表示可以播放，否则不能
 - (void)checkStart:(AudioPlayer *)player callback:(FCResultCallback)callback
 {
     //检查网络播放设置和当前网络环境
     //...
+    dispatch_async(queue, ^{
+        
+        [NSThread sleepForTimeInterval:0.01];
+        
+        NSError *error = [NSError errorWithCode:0 xtmsg:@"Check OK"];
+        
+        mainFCResultCallback(callback, error);
+        
+    });
     
-    NSError *error = [NSError errorWithCode:0 xtmsg:@"Check OK"];
-    
-    callback(error);
 }
 
 

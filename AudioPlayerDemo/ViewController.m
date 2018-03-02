@@ -31,7 +31,7 @@
     
     self.player = player;
 
-    [player start:nil];
+    [player checkStart];
 }
 
 - (void)dealloc
@@ -89,16 +89,13 @@
 
 - (IBAction)clickButton:(id)sender
 {
-    for(NSInteger i = 0; i < 10; i++)
+    
+    for(NSInteger i = 0; i < 1; i++)
     {
-        if(self.player.state == AudioPlayer_State_None || self.player.state == AudioPlayer_State_Stopped)
-        {
-            [self.player start:nil];
-        }
-        else
-        {
-            [self.player stop:nil];
-        }
+        [self.player checkStart];
+        
+        [self.player checkStop];
+        
     }
     
 }

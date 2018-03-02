@@ -16,14 +16,13 @@
 
 - (void)finishRequest:(FCRequest *)request;
 
+- (void)cancelAll;
+
 @end
 
 
 //立即执行的请求管理器
 @interface FCRequestManager : NSObject <FCRequestManager>
-
-
-+ (instancetype)sharedInstance;
 
 
 @end
@@ -35,8 +34,6 @@
     dispatch_queue_t queue;
 }
 
-+ (instancetype)sharedInstance;
-
 @end
 
 
@@ -45,8 +42,6 @@
 {
     dispatch_queue_t queue;
 }
-
-+ (instancetype)sharedInstance;
 
 //最大并发数，默认5
 @property (assign, nonatomic) NSInteger maxCount;

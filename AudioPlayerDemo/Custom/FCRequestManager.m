@@ -17,17 +17,6 @@
 
 @implementation FCRequestManager
 
-+ (instancetype)sharedInstance
-{
-    static id object = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        object = [[[self class] alloc] init];
-    });
-    
-    return object;
-}
-
 - (id)init
 {
     self = [super init];
@@ -47,7 +36,19 @@
 
 - (void)finishRequest:(FCRequest *)request
 {
+    [request destroyBlock];
+    
     [self.requests removeObject:request];
+}
+
+- (void)cancelAll
+{
+    NSMutableArray *requests = [[NSMutableArray alloc] initWithArray:self.requests];
+    
+    for(FCRequest *request in requests)
+    {
+        [request cancel];
+    }
 }
 
 @end
@@ -61,16 +62,6 @@
 
 @implementation FCQueueRequestManager
 
-+ (instancetype)sharedInstance
-{
-    static id object = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        object = [[[self class] alloc] init];
-    });
-    
-    return object;
-}
 
 - (id)init
 {
@@ -79,7 +70,6 @@
     {
         NSString *className = NSStringFromClass([self class]);
         NSString *name = [NSString stringWithFormat:@"com.yourdomain.%@",className];
-        
         queue = dispatch_queue_create(name.UTF8String, NULL);
         
         self.requests = [[NSMutableArray alloc] init];
@@ -102,9 +92,21 @@
 {
     dispatch_async(queue, ^{
         
+        [request destroyBlock];
+        
         [self.requests removeObject:request];
         
     });
+}
+
+- (void)cancelAll
+{
+    NSMutableArray *requests = [[NSMutableArray alloc] initWithArray:self.requests];
+    
+    for(FCRequest *request in requests)
+    {
+        [request cancel];
+    }
 }
 
 @end
@@ -120,17 +122,6 @@
 
 
 @implementation FCConcurrencyRequestManager
-
-+ (instancetype)sharedInstance
-{
-    static id object = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        object = [[[self class] alloc] init];
-    });
-    
-    return object;
-}
 
 - (id)init
 {
@@ -175,6 +166,7 @@
     dispatch_async(queue, ^{
         
         //NSLog(@"结束执行 %@",NSStringFromClass([request class]));
+        [request destroyBlock];
         
         if(request && [self.requests containsObject:request])
         {
@@ -221,6 +213,35 @@
         
         //NSLog(@"开始执行 %@",NSStringFromClass([request class]));
         [request execute];
+    }
+}
+
+- (void)cancelAll
+{
+    {
+        NSMutableArray *requests = [[NSMutableArray alloc] init];
+        for(FCRequest *request in self.requests)
+        {
+            [requests addObject:request];
+        }
+        
+        for(FCRequest *request in requests)
+        {
+            [request cancel];
+        }
+    }
+    
+    {
+        NSMutableArray *requests = [[NSMutableArray alloc] init];
+        for(FCRequest *request in self.waitingRequests)
+        {
+            [requests addObject:request];
+        }
+        
+        for(FCRequest *request in requests)
+        {
+            [request cancel];
+        }
     }
 }
 

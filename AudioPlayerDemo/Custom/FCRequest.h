@@ -40,6 +40,8 @@
 
 - (void)execute;
 
+- (void)destroyBlock;
+
 @end
 
 

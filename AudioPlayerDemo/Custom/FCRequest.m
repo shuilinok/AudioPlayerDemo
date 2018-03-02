@@ -89,10 +89,13 @@
             self.callback = nil;
         }
         
-        self.block = nil;
-        
         [self.manager finishRequest:self];
     });
+}
+
+- (void)destroyBlock
+{
+    self.block = nil;
 }
 
 @end
