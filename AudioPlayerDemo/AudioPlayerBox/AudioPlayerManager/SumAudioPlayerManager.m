@@ -104,6 +104,8 @@
     if(error.code == noErr)
     {
         //检查环境
+        player.state = AudioPlayer_State_Starting;
+        
         [self.conditionChecker checkStart:player callback:^(NSError *error) {
             
             if(request.bCancel)
@@ -133,6 +135,8 @@
 
 - (void)stop:(AudioPlayer *)player
 {
+    [self.requestManager cancelAll];
+    
     //串行
     FCRequest *request = [[FCRequest alloc] init];
     request.manager = self.requestManager;
@@ -141,11 +145,15 @@
         
         if(player == self.player)
         {
-            [self.requestManager cancelAll];
             NSError *error = [self.stateChecker checkStop:player];
             
             if(error.code == noErr)
             {
+                player.state = AudioPlayer_State_Stopping;
+                
+                //可以检查
+                //...
+                
                 [player stop];
             }
         }
@@ -155,8 +163,6 @@
     } callback:^{
         
     }];
-    
-    
     
 }
 

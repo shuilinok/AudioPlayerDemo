@@ -46,7 +46,7 @@
     //...
     dispatch_async(queue, ^{
         
-        [NSThread sleepForTimeInterval:0.01];
+        [NSThread sleepForTimeInterval:0.8];
         
         NSError *error = [NSError errorWithCode:0 xtmsg:@"Check OK"];
         
