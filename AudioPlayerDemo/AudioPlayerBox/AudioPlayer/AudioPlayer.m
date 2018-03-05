@@ -7,7 +7,6 @@
 //
 
 #import "AudioPlayer.h"
-#import "AudioPlayerManager.h"
 #import "AudioPlayerStartedRequest.h"
 #import "AudioPlayerStoppedRequest.h"
 
@@ -32,25 +31,25 @@
 //外部调用
 - (void)checkStart
 {
-    if(self.manager == nil)
+    if(self.delegate == nil)
     {
         [self start];
     }
     else
     {
-        [self.manager start:self];
+        [self.delegate start:self];
     }
 }
 
 - (void)checkStop
 {
-    if(self.manager == nil)
+    if(self.delegate == nil)
     {
         [self stop];
     }
     else
     {
-        [self.manager stop:self];
+        [self.delegate stop:self];
     }
 }
 

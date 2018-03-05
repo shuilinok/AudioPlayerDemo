@@ -89,7 +89,15 @@
             self.callback = nil;
         }
         
-        [self.manager finishRequest:self];
+        if(self.manager == nil)
+        {
+            [self destroyBlock];
+        }
+        else
+        {
+            [self.manager finishRequest:self];
+        }
+        
     });
 }
 

@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AudioPlayerManager.h"
+#import "AudioPlayer.h"
 #import "AudioPlayerStateChecker.h"
 #import "AudioPlayerConditionChecker.h"
 
-@interface SumAudioPlayerManager : NSObject <AudioPlayerManager>
+@interface SumAudioPlayerManager : NSObject <AudioPlayerDelegate>
 
 @property (readonly, strong, nonatomic) AudioPlayerStateChecker *stateChecker;
 

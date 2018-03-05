@@ -42,7 +42,7 @@
 - (AudioFilePlayer *)createPlayer
 {
     AudioFilePlayer *player = [[AudioFilePlayer alloc] init];
-    player.manager = [SumAudioPlayerManager sharedInstance];
+    player.delegate = [SumAudioPlayerManager sharedInstance];
     
     return player;
 }

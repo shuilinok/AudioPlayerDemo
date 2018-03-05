@@ -15,7 +15,15 @@ typedef NS_ENUM(NSUInteger, AudioPlayer_State) {
 };
 
 
-@protocol AudioPlayerManager;
+@class AudioPlayer;
+
+@protocol AudioPlayerDelegate <NSObject>
+
+- (void)start:(AudioPlayer *)player;
+
+- (void)stop:(AudioPlayer *)player;
+
+@end
 
 //声音播放器
 @interface AudioPlayer : NSObject
@@ -26,7 +34,7 @@ typedef NS_ENUM(NSUInteger, AudioPlayer_State) {
 /* 错误发生，KVO */
 @property (strong, nonatomic) NSError *error;
 
-@property(weak, nonatomic) id<AudioPlayerManager> manager;
+@property(weak, nonatomic) id<AudioPlayerDelegate> delegate;
 
 //外部调用
 - (void)checkStart;
