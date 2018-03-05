@@ -60,7 +60,7 @@
 {
     //串行
     FCRequest *request = [[FCRequest alloc] init];
-    request.manager = self.requestManager;
+    request.delegate = self.requestManager;
     
     [request send:^{
         
@@ -144,7 +144,7 @@
     
     //串行
     FCRequest *request = [[FCRequest alloc] init];
-    request.manager = self.requestManager;
+    request.delegate = self.requestManager;
     
     [request send:^{
         

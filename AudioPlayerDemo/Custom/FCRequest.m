@@ -50,13 +50,13 @@
         return;
     }
     
-    if(self.manager == nil)
+    if(self.delegate == nil)
     {
         [self execute];
     }
     else
     {
-        [self.manager addRequest:self];
+        [self.delegate sendRequest:self];
     }
 }
 
@@ -89,13 +89,13 @@
             self.callback = nil;
         }
         
-        if(self.manager == nil)
+        if(self.delegate == nil)
         {
             [self destroyBlock];
         }
         else
         {
-            [self.manager finishRequest:self];
+            [self.delegate finishRequest:self];
         }
         
     });

@@ -9,41 +9,33 @@
 #import <Foundation/Foundation.h>
 #import "FCRequest.h"
 
-@protocol FCRequestManager <NSObject>
-
-//子类重写
-- (void)addRequest:(FCRequest *)request;
-
-- (void)finishRequest:(FCRequest *)request;
-
-- (void)cancelAll;
-
-@end
-
 
 //立即执行的请求管理器
-@interface FCRequestManager : NSObject <FCRequestManager>
+@interface FCRequestManager : NSObject <FCRequestDelegate>
 
-
+- (void)cancelAll;
 @end
 
 
 //异步请求管理器
-@interface FCQueueRequestManager : NSObject <FCRequestManager>
+@interface FCQueueRequestManager : NSObject <FCRequestDelegate>
 {
     dispatch_queue_t queue;
 }
 
+- (void)cancelAll;
 @end
 
 
 //请求并发数管理器，而且支持请求优先发送
-@interface FCConcurrencyRequestManager : NSObject <FCRequestManager>
+@interface FCConcurrencyRequestManager : NSObject <FCRequestDelegate>
 {
     dispatch_queue_t queue;
 }
 
 //最大并发数，默认5
 @property (assign, nonatomic) NSInteger maxCount;
+
+- (void)cancelAll;
 
 @end

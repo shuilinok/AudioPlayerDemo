@@ -27,7 +27,7 @@
     return self;
 }
 
-- (void)addRequest:(FCRequest *)request
+- (void)sendRequest:(FCRequest *)request
 {
     [self.requests addObject:request];
     
@@ -43,7 +43,11 @@
 
 - (void)cancelAll
 {
-    NSMutableArray *requests = [[NSMutableArray alloc] initWithArray:self.requests];
+    NSMutableArray *requests = [[NSMutableArray alloc] init];
+    for(FCRequest *request in self.requests)
+    {
+        [requests addObject:request];
+    }
     
     for(FCRequest *request in requests)
     {
@@ -77,7 +81,7 @@
     return self;
 }
 
-- (void)addRequest:(FCRequest *)request
+- (void)sendRequest:(FCRequest *)request
 {
     dispatch_async(queue, ^{
         
@@ -101,7 +105,11 @@
 
 - (void)cancelAll
 {
-    NSMutableArray *requests = [[NSMutableArray alloc] initWithArray:self.requests];
+    NSMutableArray *requests = [[NSMutableArray alloc] init];
+    for(FCRequest *request in self.requests)
+    {
+        [requests addObject:request];
+    }
     
     for(FCRequest *request in requests)
     {
@@ -141,7 +149,7 @@
     return self;
 }
 
-- (void)addRequest:(FCRequest *)request
+- (void)sendRequest:(FCRequest *)request
 {
     dispatch_async(queue, ^{
         

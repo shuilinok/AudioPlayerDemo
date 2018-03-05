@@ -34,7 +34,7 @@ typedef NS_ENUM(NSUInteger, AudioPlayer_State) {
 /* 错误发生，KVO */
 @property (strong, nonatomic) NSError *error;
 
-@property(weak, nonatomic) id<AudioPlayerDelegate> delegate;
+@property(weak, nonatomic) id<AudioPlayerDelegate> delegate;//默认nil，不受控制
 
 //外部调用
 - (void)checkStart;
