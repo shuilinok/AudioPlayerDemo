@@ -90,12 +90,11 @@
 - (IBAction)clickButton:(id)sender
 {
     
-    for(NSInteger i = 0; i < 1; i++)
+    for(NSInteger i = 0; i < 3; i++)
     {
         [self.player checkStart];
-        
+    
         [self.player checkStop];
-        
     }
     
 }

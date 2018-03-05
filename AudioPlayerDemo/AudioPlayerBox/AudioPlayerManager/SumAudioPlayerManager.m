@@ -76,6 +76,11 @@
             //等待完全停止
             [self.player waitStopped:^{
                 
+                if(request.bCancel)
+                {
+                    return;
+                }
+                
                 self.player = player;
                 
                 [self checkStart:request];
