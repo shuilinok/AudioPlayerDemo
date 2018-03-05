@@ -36,8 +36,6 @@
 
 - (void)finishRequest:(FCRequest *)request
 {
-    [request destroyBlock];
-    
     [self.requests removeObject:request];
 }
 
@@ -95,8 +93,6 @@
 - (void)finishRequest:(FCRequest *)request
 {
     dispatch_async(queue, ^{
-        
-        [request destroyBlock];
         
         [self.requests removeObject:request];
         
@@ -174,8 +170,7 @@
     dispatch_async(queue, ^{
         
         //NSLog(@"结束执行 %@",NSStringFromClass([request class]));
-        [request destroyBlock];
-        
+    
         if(request && [self.requests containsObject:request])
         {
             [self.requests removeObject:request];

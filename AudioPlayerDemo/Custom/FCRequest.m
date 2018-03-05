@@ -76,7 +76,14 @@
 
 - (void)execute
 {
-    self.block();
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        if(self.block)
+        {
+            self.block();
+        }
+    });
+    
 }
 
 - (void)finish
@@ -89,21 +96,11 @@
             self.callback = nil;
         }
         
-        if(self.delegate == nil)
-        {
-            [self destroyBlock];
-        }
-        else
-        {
-            [self.delegate finishRequest:self];
-        }
+        self.block = nil;
+        
+        [self.delegate finishRequest:self];
         
     });
-}
-
-- (void)destroyBlock
-{
-    self.block = nil;
 }
 
 @end

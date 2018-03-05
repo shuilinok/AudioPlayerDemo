@@ -76,11 +76,6 @@
             //等待完全停止
             [self.player waitStopped:^{
                 
-                if(request.bCancel)
-                {
-                    return;
-                }
-                
                 self.player = player;
                 
                 [self checkStart:request];
@@ -101,8 +96,13 @@
 
 - (void)checkStart:(FCRequest *)request
 {
-    AudioPlayer *player = self.player;
+    if(request.bCancel)
+    {
+        return;
+    }
     
+    AudioPlayer *player = self.player;
+ 
     //检查状态
     NSError *error = [self.stateChecker checkStart:player];
     
