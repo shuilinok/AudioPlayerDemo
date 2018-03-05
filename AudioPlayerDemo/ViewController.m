@@ -77,7 +77,7 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    if([self.player isEqual:object])
+    if(self.player == object)
     {
         if([keyPath isEqualToString:@"state"])
         {
@@ -89,14 +89,12 @@
 
 - (IBAction)clickButton:(id)sender
 {
-    
-    for(NSInteger i = 0; i < 3; i++)
+    for(NSInteger i = 0; i < 10; i++)
     {
         [self.player checkStart];
-    
+        
         [self.player checkStop];
     }
-    
 }
 
 @end

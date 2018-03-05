@@ -30,7 +30,7 @@
 //请求并发数管理器，而且支持请求优先发送
 @interface FCConcurrencyRequestManager : NSObject <FCRequestDelegate>
 {
-    dispatch_queue_t queue;
+    
 }
 
 //最大并发数，默认5

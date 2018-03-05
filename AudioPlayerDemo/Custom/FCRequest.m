@@ -76,31 +76,23 @@
 
 - (void)execute
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        if(self.block)
-        {
-            self.block();
-        }
-    });
-    
+    if(self.block)
+    {
+        self.block();
+    }
 }
 
 - (void)finish
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        if (self.callback)
-        {
-            self.callback();
-            self.callback = nil;
-        }
-        
-        self.block = nil;
-        
-        [self.delegate finishRequest:self];
-        
-    });
+    if (self.callback)
+    {
+        self.callback();
+        self.callback = nil;
+    }
+    
+    self.block = nil;
+    
+    [self.delegate finishRequest:self];
 }
 
 @end

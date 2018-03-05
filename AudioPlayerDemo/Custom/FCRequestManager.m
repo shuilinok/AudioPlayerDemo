@@ -132,11 +132,6 @@
     self = [super init];
     if(self)
     {
-        NSString *className = NSStringFromClass([self class]);
-        NSString *name = [NSString stringWithFormat:@"com.yourdomain.%@",className];
-        
-        queue = dispatch_queue_create(name.UTF8String, NULL);
-        
         self.requests = [[NSMutableArray alloc] init];
         self.waitingRequests = [[NSMutableArray alloc] init];
         
@@ -147,40 +142,32 @@
 
 - (void)sendRequest:(FCRequest *)request
 {
-    dispatch_async(queue, ^{
+    if(self.requests.count < self.maxCount)//直接执行
+    {
+        [self.requests addObject:request];
         
-        if(self.requests.count < self.maxCount)//直接执行
-        {
-            [self.requests addObject:request];
-            
-            //NSLog(@"开始执行 %@",NSStringFromClass([request class]));
-            
-            [request execute];
-        }
-        else    //放入等待
-        {
-            [self.waitingRequests addObject:request];
-        }
-    });
+        //NSLog(@"开始执行 %@",NSStringFromClass([request class]));
+        
+        [request execute];
+    }
+    else    //放入等待
+    {
+        [self.waitingRequests addObject:request];
+    }
     
 }
 
 - (void)finishRequest:(FCRequest *)request
 {
-    dispatch_async(queue, ^{
-        
-        //NSLog(@"结束执行 %@",NSStringFromClass([request class]));
-    
-        if(request && [self.requests containsObject:request])
-        {
-            [self.requests removeObject:request];
-            [self handleNextRequest];//取出等待中的执行
-        }
-        else if(request && [self.waitingRequests containsObject:request])
-        {
-            [self.waitingRequests removeObject:request];
-        }
-    });
+    if(request && [self.requests containsObject:request])
+    {
+        [self.requests removeObject:request];
+        [self handleNextRequest];//取出等待中的执行
+    }
+    else if(request && [self.waitingRequests containsObject:request])
+    {
+        [self.waitingRequests removeObject:request];
+    }
 }
 
 //从等待队列中获取优先级最高的请求

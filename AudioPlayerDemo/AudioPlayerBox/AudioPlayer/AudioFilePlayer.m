@@ -86,6 +86,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             
             self.state = AudioPlayer_State_Stopped;
+            
         });
         
         
