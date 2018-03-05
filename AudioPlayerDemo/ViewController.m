@@ -23,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [self.button setTitle:@"" forState:UIControlStateNormal];
     
     NSString *url = @"http://www.xxx.com/test.mp3";
     
@@ -82,17 +83,31 @@
         if([keyPath isEqualToString:@"state"])
         {
             AudioPlayer_State state = self.player.state;
-            NSLog(@"状态改变为：%ld",state);
+            if(state == AudioPlayer_State_Stopped || state == AudioPlayer_State_Stopping || state == AudioPlayer_State_None)
+            {
+                //[self.button setTitle:@"开始" forState:UIControlStateNormal];
+                [self.button setImage:[UIImage imageNamed:@"video_start"] forState:UIControlStateNormal];
+            }
+            else
+            {
+                //[self.button setTitle:@"停止" forState:UIControlStateNormal];
+                [self.button setImage:[UIImage imageNamed:@"video_stop"] forState:UIControlStateNormal];
+            }
+            
+            //NSLog(@"状态改变为：%ld",state);
         }
     }
 }
 
 - (IBAction)clickButton:(id)sender
 {
-    for(NSInteger i = 0; i < 10; i++)
+    AudioPlayer_State state = self.player.state;
+    if(state == AudioPlayer_State_Stopped || state == AudioPlayer_State_Stopping || state == AudioPlayer_State_None)
     {
         [self.player checkStart];
-        
+    }
+    else
+    {
         [self.player checkStop];
     }
 }

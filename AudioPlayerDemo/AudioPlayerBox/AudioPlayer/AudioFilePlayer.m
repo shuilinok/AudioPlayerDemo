@@ -44,7 +44,6 @@
             
             //启动播放操作
             //...
-            NSLog(@"starting");
             
             [NSThread sleepForTimeInterval:1];
             
@@ -79,9 +78,8 @@
         
         //停止播放操作
         //...
-        NSLog(@"stopping");
         
-        [NSThread sleepForTimeInterval:0.5];
+        [NSThread sleepForTimeInterval:0.02];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             

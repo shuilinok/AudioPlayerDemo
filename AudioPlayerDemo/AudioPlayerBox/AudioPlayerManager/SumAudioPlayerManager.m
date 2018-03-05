@@ -110,6 +110,7 @@
     {
         //检查环境
         player.state = AudioPlayer_State_Starting;
+        NSLog(@"starting");
         
         [self.conditionChecker checkStart:player callback:^(NSError *error) {
             
@@ -155,6 +156,7 @@
             if(error.code == noErr)
             {
                 player.state = AudioPlayer_State_Stopping;
+                NSLog(@"stopping");
                 
                 //可以检查
                 //...
