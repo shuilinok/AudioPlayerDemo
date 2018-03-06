@@ -7,12 +7,12 @@
 
 
 #import "ViewController.h"
-#import "AudioFilePlayer.h"
+#import "MusicPlayer.h"
 #import "SumAudioPlayerManager.h"
 
 @interface ViewController ()
 
-@property (strong, nonatomic) AudioFilePlayer *player;
+@property (strong, nonatomic) AudioPlayer *player;
 
 @property (strong, nonatomic) IBOutlet UIButton *button;
 
@@ -25,10 +25,8 @@
     // Do any additional setup after loading the view, typically from a nib.
     [self.button setTitle:@"" forState:UIControlStateNormal];
     
-    NSString *url = @"http://www.xxx.com/test.mp3";
-    
-    AudioFilePlayer *player = [self createPlayer];
-    player.url = url;
+    MusicPlayer *player = [self createPlayer];
+    player.musicID = @"123";
     
     self.player = player;
 
@@ -40,9 +38,9 @@
     self.player = nil;
 }
 
-- (AudioFilePlayer *)createPlayer
+- (MusicPlayer *)createPlayer
 {
-    AudioFilePlayer *player = [[AudioFilePlayer alloc] init];
+    MusicPlayer *player = [[MusicPlayer alloc] init];
     player.delegate = [SumAudioPlayerManager sharedInstance];
     
     return player;
@@ -67,7 +65,7 @@
     [temp removeObserver:self forKeyPath:@"state" context:NULL];
 }
 
-- (void)setPlayer:(AudioFilePlayer *)player
+- (void)setPlayer:(AudioPlayer *)player
 {
     [self endObserve];
     
@@ -80,10 +78,14 @@
 {
     if(self.player == object)
     {
+        for(NSString *key in change)
+        {
+            NSLog(@"key : %@, object : %@",key,[change objectForKey:key]);
+        }
+        
         if([keyPath isEqualToString:@"state"])
         {
-            AudioPlayer_State state = self.player.state;
-            if(state == AudioPlayer_State_Stopped || state == AudioPlayer_State_Stopping || state == AudioPlayer_State_None)
+            if(![self isPlaying])
             {
                 //[self.button setTitle:@"开始" forState:UIControlStateNormal];
                 [self.button setImage:[UIImage imageNamed:@"video_start"] forState:UIControlStateNormal];
@@ -94,15 +96,34 @@
                 [self.button setImage:[UIImage imageNamed:@"video_stop"] forState:UIControlStateNormal];
             }
             
-            //NSLog(@"状态改变为：%ld",state);
+            NSLog(@"状态改变为：%ld",self.player.state);
         }
     }
 }
 
-- (IBAction)clickButton:(id)sender
+- (BOOL)isPlaying
 {
     AudioPlayer_State state = self.player.state;
+    
     if(state == AudioPlayer_State_Stopped || state == AudioPlayer_State_Stopping || state == AudioPlayer_State_None)
+    {
+        return NO;
+    }
+    
+    return YES;
+}
+
+- (IBAction)clickButton:(id)sender
+{
+    for(int i = 0; i < 10; i++)
+    {
+        [self.player checkStop];
+        
+        [self.player checkStart];
+    }
+    
+    /*
+    if(![self isPlaying])
     {
         [self.player checkStart];
     }
@@ -110,6 +131,7 @@
     {
         [self.player checkStop];
     }
+     */
 }
 
 @end

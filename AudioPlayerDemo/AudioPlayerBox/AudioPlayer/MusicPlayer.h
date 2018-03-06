@@ -7,13 +7,10 @@
 //
 
 #import "AudioPlayer.h"
-#import "AudioFilePlayer.h"
 
 @interface MusicPlayer : AudioPlayer
 
 @property (strong, nonatomic) NSString *musicID;
-
-@property (strong, nonatomic) AudioFilePlayer *filePlayer;
 
 @end
 
