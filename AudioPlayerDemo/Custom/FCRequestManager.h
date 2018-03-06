@@ -14,16 +14,7 @@
 @interface FCRequestManager : NSObject <FCRequestDelegate>
 
 - (void)cancelAll;
-@end
 
-
-//异步请求管理器
-@interface FCQueueRequestManager : NSObject <FCRequestDelegate>
-{
-    dispatch_queue_t queue;
-}
-
-- (void)cancelAll;
 @end
 
 

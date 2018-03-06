@@ -56,65 +56,6 @@
 @end
 
 
-@interface FCQueueRequestManager ()
-
-@property (strong, nonatomic) NSMutableArray *requests;
-
-@end
-
-@implementation FCQueueRequestManager
-
-
-- (id)init
-{
-    self = [super init];
-    if(self)
-    {
-        NSString *className = NSStringFromClass([self class]);
-        NSString *name = [NSString stringWithFormat:@"com.yourdomain.%@",className];
-        queue = dispatch_queue_create(name.UTF8String, NULL);
-        
-        self.requests = [[NSMutableArray alloc] init];
-    }
-    return self;
-}
-
-- (void)sendRequest:(FCRequest *)request
-{
-    dispatch_async(queue, ^{
-        
-        [self.requests addObject:request];
-        
-        [request execute];
-        
-    });
-}
-
-- (void)finishRequest:(FCRequest *)request
-{
-    dispatch_async(queue, ^{
-        
-        [self.requests removeObject:request];
-        
-    });
-}
-
-- (void)cancelAll
-{
-    NSMutableArray *requests = [[NSMutableArray alloc] init];
-    for(FCRequest *request in self.requests)
-    {
-        [requests addObject:request];
-    }
-    
-    for(FCRequest *request in requests)
-    {
-        [request cancel];
-    }
-}
-
-@end
-
 
 @interface FCConcurrencyRequestManager ()
 
