@@ -78,10 +78,10 @@
 {
     if(self.player == object)
     {
-        for(NSString *key in change)
-        {
-            NSLog(@"key : %@, object : %@",key,[change objectForKey:key]);
-        }
+//        for(NSString *key in change)
+//        {
+//            NSLog(@"key : %@, object : %@",key,[change objectForKey:key]);
+//        }
         
         if([keyPath isEqualToString:@"state"])
         {
@@ -96,7 +96,7 @@
                 [self.button setImage:[UIImage imageNamed:@"video_stop"] forState:UIControlStateNormal];
             }
             
-            NSLog(@"状态改变为：%ld",self.player.state);
+            //NSLog(@"状态改变为：%ld",self.player.state);
         }
     }
 }
@@ -105,7 +105,7 @@
 {
     AudioPlayer_State state = self.player.state;
     
-    if(state == AudioPlayer_State_Stopped || state == AudioPlayer_State_Stopping || state == AudioPlayer_State_None)
+    if(state == AudioPlayer_State_Stopped || state == AudioPlayer_State_None)
     {
         return NO;
     }
@@ -115,14 +115,13 @@
 
 - (IBAction)clickButton:(id)sender
 {
-    for(int i = 0; i < 10; i++)
-    {
-        [self.player checkStop];
-        
-        [self.player checkStart];
-    }
+//    for(int i = 0; i < 10; i++)
+//    {
+//        [self.player checkStop];
+//
+//        [self.player checkStart];
+//    }
     
-    /*
     if(![self isPlaying])
     {
         [self.player checkStart];
@@ -131,7 +130,6 @@
     {
         [self.player checkStop];
     }
-     */
 }
 
 @end

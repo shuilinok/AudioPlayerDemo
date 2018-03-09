@@ -93,7 +93,14 @@
     //这里还可加入异步stopping
     //...
     
-    [self.filePlayer checkStop];
+    if(self.filePlayer == nil)
+    {
+        self.state = AudioPlayer_State_Stopped;
+    }
+    else
+    {
+        [self.filePlayer checkStop];
+    }
 }
 
 //开始观察

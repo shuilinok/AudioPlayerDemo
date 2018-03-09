@@ -79,7 +79,7 @@
         //停止播放操作
         //...
         
-        [NSThread sleepForTimeInterval:0.02];
+        [NSThread sleepForTimeInterval:0.6];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             

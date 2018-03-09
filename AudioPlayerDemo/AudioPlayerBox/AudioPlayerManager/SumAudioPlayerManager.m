@@ -58,6 +58,8 @@
 
 - (void)start:(AudioPlayer *)player
 {
+    [self.requestManager cancelAll];
+    
     //串行
     FCRequest *request = [[FCRequest alloc] init];
     request.delegate = self.requestManager;
@@ -75,17 +77,13 @@
             
             //等待完全停止
             [self.player waitStopped:^{
-                
-                self.player = player;
-                
-                [self checkStart:request];
+
+                [self checkStart:request player:player];
             }];
         }
         else
         {
-            self.player = player;
-            
-            [self checkStart:request];
+            [self checkStart:request player:player];
         }
         
     } callback:^{
@@ -94,14 +92,14 @@
     
 }
 
-- (void)checkStart:(FCRequest *)request
+- (void)checkStart:(FCRequest *)request player:(AudioPlayer *)player
 {
     if(request.bCancel)
     {
         return;
     }
     
-    AudioPlayer *player = self.player;
+    self.player = player;
  
     //检查状态
     NSError *error = [self.stateChecker checkStart:player];
